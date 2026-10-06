@@ -204,7 +204,6 @@ p { margin: 0 0 1em; max-width: var(--measure); }
 }
 
 @media (min-width: 720px) { .cards { grid-template-columns: repeat(2, 1fr); } }
-@media (min-width: 1000px) { .cards { grid-template-columns: repeat(3, 1fr); } }
 
 .card {
   position: relative;
@@ -502,6 +501,35 @@ p { margin: 0 0 1em; max-width: var(--measure); }
 }
 
 .card-foot .open { white-space: nowrap; }
+
+/* ---------- Case study extras: spacing, risk table, original matrix ---------- */
+
+.project-body { grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 960px) { .project-body { grid-template-columns: minmax(0, 1fr) 300px; } }
+
+.block .gallery { margin-top: 24px; }
+.gallery img { height: auto; }
+.timing + .timing { margin-top: 40px; }
+.block > p + .table-wrap,
+.block > .table-wrap + p { margin-top: 24px; }
+
+.table-wrap { overflow-x: auto; margin-bottom: 24px; border: 1px solid var(--rule); border-radius: 4px; background: var(--card); }
+
+.risk-table { width: 100%; min-width: 620px; border-collapse: collapse; font-size: 0.9375rem; line-height: 1.35; }
+.risk-table caption { text-align: left; padding: 14px 16px 0; color: var(--steel); font-size: 0.875rem; caption-side: top; }
+.risk-table th,
+.risk-table td { padding: 12px 16px; text-align: right; border-bottom: 1px solid var(--rule); vertical-align: top; }
+.risk-table thead th { font-size: 0.8125rem; font-weight: 500; color: var(--steel); border-bottom: 2px solid var(--ink); }
+.risk-table tbody th { text-align: left; font-weight: 500; }
+.risk-table thead th:first-child { text-align: left; }
+.risk-table tbody tr:last-child th,
+.risk-table tbody tr:last-child td { border-bottom: 0; }
+.risk-table td strong { color: var(--ink); }
+
+.more { margin-top: 8px; }
+.more summary { cursor: pointer; font-weight: 600; color: var(--link); padding: 6px 0; }
+.more[open] summary { margin-bottom: 16px; }
+.more img { width: 100%; height: auto; margin-bottom: 16px; border: 1px solid var(--rule); border-radius: 4px; background: #fff; }
 
 @media (max-width: 719px) {
   .hero { padding: 40px 0 16px; }

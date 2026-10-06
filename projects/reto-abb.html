@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Robotic bottle packaging cell | Brandon Lagunas</title>
+  <meta name="description" content="ABB challenge: a bottle packaging cell with two ABB IRB 4600 robots, Cognex inspection and a nine-hazard safety analysis, validated in RobotStudio.">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <nav class="site-nav" aria-label="Main">
+    <div class="wrap">
+      <a class="brand" href="../index.html">Brandon Lagunas</a>
+      <ul class="nav-links">
+        <li><a href="../index.html#projects">Projects</a></li>
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="wrap">
+
+    <div class="crumbs"><a href="../index.html#projects">Projects</a> / ABB challenge</div>
+
+    <header class="project-head">
+      <div class="card-meta"><span class="partner">ABB challenge</span><span>May 2025</span><span>Team of 4</span></div>
+      <h1 class="project-title">Robotic bottle packaging cell</h1>
+      <p class="lede">A robotic cell that replaces manual bottle packing by two operators, built around two ABB IRB 4600 robots, Cognex inspection and a full safety design. Every result on this page comes from the design and its simulation. The cell was not built.</p>
+    </header>
+
+    <figure class="cover">
+      <img src="../img/reto-abb/cell-isometric.jpg" width="1600" height="1279" style="object-position: 50% 42%" alt="Isometric render of the packaging cell: two ABB robots between a bottle conveyor and a box conveyor, enclosed by yellow safety fencing with a signal tower.">
+    </figure>
+
+    <dl class="stats">
+      <div><dt>Cycle time, from 60 s by hand</dt><dd>38 s</dd><span class="tag"><span class="swatch sim"></span>Simulation</span></div>
+      <div><dt>Packing error rate, from 5%</dt><dd>1%</dd><span class="tag"><span class="swatch sim"></span>Projected</span></div>
+      <div><dt>Cumulative ROI at 3 years</dt><dd>338%</dd><span class="tag"><span class="swatch sim"></span>Projected</span></div>
+      <div><dt>Hazards analyzed, top three cut from 6 to 3</dt><dd>9</dd></div>
+    </dl>
+
+    <div class="project-body">
+      <div>
+
+        <section class="block" aria-labelledby="challenge-heading">
+          <h2 id="challenge-heading">The challenge</h2>
+          <p>Two full-time workers packed bottles by hand on a production line. The client's request for quotation (RFQ) described long cycle times, frequent errors and constant ergonomic and operational risk for the operators. The task was to design a cell that automates the packing and meets international robot safety standards.</p>
+        </section>
+
+        <section class="block" aria-labelledby="work-heading">
+          <h2 id="work-heading">What I did</h2>
+          <ul class="work">
+            <li>Worked on the full safety analysis: a risk matrix of nine hazards, each rated for likelihood and severity before and after mitigation, with the cost of every accident and every mitigation, against RIA R15.06-1999, ISO 12100, ISO 13849-1, ANSI Z535 and SIL.</li>
+            <li>Helped source the mechanical models and lay out the cell: a bottle line and a box line served by two ABB IRB 4600 robots, inside perimeter fencing with an interlocked access door.</li>
+            <li>Worked in a team of four that also covered the electrical and control design (PLC, Ethernet/IP), Cognex vision inspection, the RobotStudio simulation and the financial analysis.</li>
+          </ul>
+        </section>
+
+        <section class="block" aria-labelledby="layout-heading">
+          <h2 id="layout-heading">Cell layout</h2>
+          <p>The cell has two lines. On the bottle line, bottles pass an inspection station, reach a pick point, and any bottle that fails inspection drops into a reject box. On the box line, empty boxes advance and stop to be filled. One robot sits between the lines and moves bottles into boxes. A second robot at the end of the box line lifts the full boxes onto a wooden pallet.</p>
+          <ul class="gallery">
+            <li>
+              <figure>
+                <img src="../img/reto-abb/cell-layout-top.jpg" width="1600" height="1279" loading="lazy" alt="Top view of the CAD model: bottle line at the bottom, box line at the top, two robots in the middle and the fence around the cell.">
+                <figcaption>Top view of the CAD model.</figcaption>
+              </figure>
+            </li>
+            <li>
+              <figure>
+                <img src="../img/reto-abb/technical-drawing.png" width="991" height="700" loading="lazy" alt="Technical drawing of the cell footprint with its main dimensions.">
+                <figcaption>Technical drawing with the main dimensions.</figcaption>
+              </figure>
+            </li>
+            <li>
+              <figure>
+                <img src="../img/reto-abb/robot-closeup.jpg" width="1600" height="1279" loading="lazy" alt="Close-up of an ABB IRB 4600 holding a dual gripper over the roller conveyor, with the Cognex camera mounted on the fence.">
+                <figcaption>The bottle robot with two SMC grippers mounted in parallel, so it picks two bottles at once.</figcaption>
+              </figure>
+            </li>
+            <li>
+              <figure>
+                <img src="../img/reto-abb/safety-cage-front.jpg" width="1600" height="1279" loading="lazy" alt="Front view of the fenced cell with the control cabinet, emergency stop, fire extinguisher and safety signs.">
+                <figcaption>Front of the cell: control cabinet, emergency stop, extinguisher and signage.</figcaption>
+              </figure>
+            </li>
+          </ul>
+        </section>
+
+        <section class="block" aria-labelledby="safety-heading">
+          <h2 id="safety-heading">Safety analysis</h2>
+          <p>The analysis covered nine hazards. Each was rated by likelihood and severity (rating = likelihood × severity), then rated again after mitigation. Mitigation lowered the likelihood in every case, so the three hazards rated 6 fell to 3. In eight of the nine, the mitigation costs less than the accident it prevents. The UPS was already in the budget.</p>
+
+          <div class="table-wrap">
+            <table class="risk-table">
+              <caption>Hazards, ratings before and after mitigation, and costs in US dollars.</caption>
+              <thead>
+                <tr><th scope="col">Hazard</th><th scope="col">Rating</th><th scope="col">Accident cost</th><th scope="col">Mitigation cost</th></tr>
+              </thead>
+              <tbody>
+                <tr><th scope="row">Operator enters the cell while the robot moves</th><td>6 → <strong>3</strong></td><td>75,000</td><td>≈ 6,600</td></tr>
+                <tr><th scope="row">Presence sensor fails to detect an object</th><td>4 → <strong>2</strong></td><td>3,000</td><td>≈ 500</td></tr>
+                <tr><th scope="row">Emergency stop pressed by accident</th><td>2 → <strong>1</strong></td><td>500</td><td>≈ 250</td></tr>
+                <tr><th scope="row">Vision system wrongly accepts or rejects a bottle</th><td>2 → <strong>1</strong></td><td>300</td><td>≈ 200</td></tr>
+                <tr><th scope="row">Gripper valve fails and drops a bottle</th><td>4 → <strong>2</strong></td><td>10,000</td><td>≈ 650</td></tr>
+                <tr><th scope="row">Programmed robot path leaves the expected zone</th><td>6 → <strong>3</strong></td><td>50,000</td><td>≈ 300</td></tr>
+                <tr><th scope="row">UPS cannot carry the cell through an outage</th><td>4 → <strong>2</strong></td><td>1,000</td><td>4,000, already budgeted</td></tr>
+                <tr><th scope="row">Control cabinet overheats or shorts</th><td>6 → <strong>3</strong></td><td>25,000</td><td>≈ 250</td></tr>
+                <tr><th scope="row">Signal tower fails and misreports the robot state</th><td>4 → <strong>2</strong></td><td>1,000</td><td>≈ 300</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p>The safeguards in the design: a rigid perimeter fence with an interlocked access door, mushroom emergency stops reachable from every station, light curtains on the open sides, a traffic-light signal tower, ANSI Z535 safety signs, a fire extinguisher, and a manual reset before the cell restarts.</p>
+
+          <details class="more">
+            <summary>See the original risk matrix from the report</summary>
+            <img src="../img/reto-abb/risk-matrix-1.png" width="1600" height="717" loading="lazy" alt="Risk matrix, hazards 1 to 4: description, likelihood, severity, rating, mitigation, post-mitigation rating and costs.">
+            <img src="../img/reto-abb/risk-matrix-2.png" width="1600" height="766" loading="lazy" alt="Risk matrix, hazards 5 to 9: description, likelihood, severity, rating, mitigation, post-mitigation rating and costs.">
+          </details>
+        </section>
+
+        <section class="block" aria-labelledby="results-heading">
+          <h2 id="results-heading">Results</h2>
+
+          <figure class="timing">
+            <p class="timing-sub">Packing cycle time. The simulated cell was validated in ABB RobotStudio.</p>
+            <div class="timing-grid">
+              <div class="scale" aria-hidden="true"><span>0</span><span>15</span><span>30</span><span>45</span><span>60 s</span></div>
+
+              <div class="row-label">Manual packing</div>
+              <div class="track"><span class="bar baseline" style="--v:1"></span></div>
+              <div class="row-value"><strong>60 s</strong> <span>by hand</span></div>
+
+              <div class="row-label">Designed cell</div>
+              <div class="track"><span class="bar sim" style="--v:0.6333"></span></div>
+              <div class="row-value"><strong>38 s</strong> <span>in simulation</span></div>
+            </div>
+          </figure>
+
+          <figure class="timing">
+            <p class="timing-sub">Packing error rate.</p>
+            <div class="timing-grid">
+              <div class="scale" aria-hidden="true"><span>0</span><span>2</span><span>4</span><span>6</span><span>8%</span></div>
+
+              <div class="row-label">Manual packing</div>
+              <div class="track"><span class="bar baseline" style="--v:0.625"></span></div>
+              <div class="row-value"><strong>5%</strong></div>
+
+              <div class="row-label">Designed cell</div>
+              <div class="track"><span class="bar sim" style="--v:0.125"></span></div>
+              <div class="row-value"><strong>1%</strong> <span>projected</span></div>
+            </div>
+          </figure>
+
+          <figure class="timing">
+            <p class="timing-sub">Cumulative return on investment, from the team's financial analysis of the initial investment, annual operating cost, labor savings, higher output and fewer errors.</p>
+            <div class="timing-grid">
+              <div class="scale" aria-hidden="true"><span>0</span><span>100</span><span>200</span><span>300</span><span>400%</span></div>
+
+              <div class="row-label">Year 1</div>
+              <div class="track"><span class="bar sim" style="--v:0.115"></span></div>
+              <div class="row-value"><strong>46%</strong></div>
+
+              <div class="row-label">Year 2</div>
+              <div class="track"><span class="bar sim" style="--v:0.48"></span></div>
+              <div class="row-value"><strong>192%</strong></div>
+
+              <div class="row-label">Year 3</div>
+              <div class="track"><span class="bar sim" style="--v:0.845"></span></div>
+              <div class="row-value"><strong>338%</strong> <span>projected</span></div>
+            </div>
+            <ul class="legend">
+              <li><span class="swatch baseline"></span>Manual operation</li>
+              <li><span class="swatch sim"></span>Hatched: simulation and projection</li>
+            </ul>
+          </figure>
+
+          <p>Watch the team's <a href="https://youtu.be/yzfxEfT4nkQ" target="_blank" rel="noopener">RobotStudio simulation on YouTube</a>.</p>
+          <p class="note">Figures, tables and results come from the team's final report for the course, dated May 4, 2025.</p>
+        </section>
+
+      </div>
+
+      <aside class="sidebar" aria-label="Project details">
+        <div class="sidebar-box">
+          <dl>
+            <div><dt>Context</dt><dd>Robot design and development course, Tecnológico de Monterrey</dd></div>
+            <div><dt>My role</dt><dd>Safety analysis, mechanical models and layout</dd></div>
+            <div><dt>Date</dt><dd>May 2025</dd></div>
+            <div><dt>Type</dt><dd>Team project, four students</dd></div>
+            <div><dt>Status</dt><dd>Designed and validated in simulation, not built</dd></div>
+          </dl>
+          <div class="tools-wrap">
+            <h3>Equipment and standards</h3>
+            <ul class="tools">
+              <li>ABB IRB 4600</li>
+              <li>RobotStudio</li>
+              <li>Cognex In-Sight 7802P</li>
+              <li>Allen-Bradley CompactLogix PLC</li>
+              <li>Ethernet/IP</li>
+              <li>SMC ZGS200x120 grippers</li>
+              <li>Light curtains</li>
+              <li>RIA R15.06-1999</li>
+              <li>ISO 12100</li>
+              <li>ISO 13849-1</li>
+              <li>ANSI Z535</li>
+              <li>SIL</li>
+            </ul>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <nav class="pager" aria-label="More projects">
+      <a href="katcon.html"><small>Previous project</small>Operations intelligence platform</a>
+      <a class="next" href="vitro.html"><small>Next project</small>Automated robotic insert loading cell</a>
+    </nav>
+
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <p>© 2026 Brandon Iván Lagunas Gaytán. <a href="mailto:blagunasg.a@gmail.com">blagunasg.a@gmail.com</a></p>
+    </div>
+  </footer>
+
+</body>
+</html>
