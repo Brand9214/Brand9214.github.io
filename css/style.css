@@ -490,6 +490,12 @@ p { margin: 0 0 1em; max-width: var(--measure); }
 
 /* ---------- Case study extras: spacing, risk table, original matrix ---------- */
 
+.hero { padding-top: 40px; }
+.hero-art { margin: 0 0 40px; border: 1px solid var(--rule); border-radius: 4px; overflow: hidden; background: #0d1626; }
+.hero-art img { display: block; width: 100%; height: clamp(150px, 28vw, 300px); }
+.about-text { margin-bottom: 44px; }
+.about-text p { margin-bottom: 1.1em; }
+
 .project-body { grid-template-columns: minmax(0, 1fr); }
 @media (min-width: 960px) { .project-body { grid-template-columns: minmax(0, 1fr) 300px; } }
 
