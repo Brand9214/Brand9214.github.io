@@ -512,6 +512,8 @@ p { margin: 0 0 1em; max-width: var(--measure); }
 .gallery img { height: auto; }
 .timing + .timing { margin-top: 40px; }
 .timing + p { margin-top: 28px; }
+@media (min-width: 800px) { .stats--3 { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 799px) { .stats--3 div:last-child { grid-column: 1 / -1; } }
 .block > p + .table-wrap,
 .block > .table-wrap + p { margin-top: 24px; }
 
