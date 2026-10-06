@@ -492,7 +492,7 @@ p { margin: 0 0 1em; max-width: var(--measure); }
 
 .hero { padding-top: 40px; }
 .hero-art { margin: 0 0 40px; border: 1px solid var(--rule); border-radius: 4px; overflow: hidden; background: #0d1626; }
-.hero-art img { display: block; width: 100%; height: clamp(150px, 28vw, 300px); }
+.hero-art img { display: block; width: 100%; height: clamp(160px, 30vw, 320px); object-fit: cover; object-position: 50% 38%; }
 .about-text { margin-bottom: 44px; }
 .about-text p { margin-bottom: 1.1em; }
 
