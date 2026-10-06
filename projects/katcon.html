@@ -8,74 +8,111 @@
   <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-  <div class="wrap">
 
-    <nav class="topbar"><a href="../index.html">All projects</a></nav>
+  <nav class="site-nav" aria-label="Main">
+    <div class="wrap">
+      <a class="brand" href="../index.html">Brandon Lagunas</a>
+      <ul class="nav-links">
+        <li><a href="../index.html#projects">Projects</a></li>
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="wrap">
+
+    <div class="crumbs"><a href="../index.html#projects">Projects</a> / Katcon</div>
 
     <header class="project-head">
+      <div class="card-meta"><span class="partner">Katcon</span><span>Sep 2025 – Jun 2026</span><span>Internship</span></div>
       <h1 class="project-title">Operations intelligence platform</h1>
       <p class="lede">A Power BI platform that shows failures and downtime for 25 production lines and 300+ machines, from the whole plant down to a single technician or system, built on a failure classification I standardized during my internship.</p>
     </header>
 
-    <dl class="titleblock" style="--cols:4">
-      <div><dt>Company</dt><dd>Katcon, automotive supplier in Monterrey</dd></div>
-      <div><dt>My role</dt><dd>Maintenance intern</dd></div>
-      <div><dt>Dates</dt><dd>Sep 2025 – Jun 2026</dd></div>
-      <div><dt>Users</dt><dd>Maintenance supervisors</dd></div>
+    <dl class="stats">
+      <div><dt>Production lines covered</dt><dd>25</dd></div>
+      <div><dt>Machines covered</dt><dd>300+</dd></div>
+      <div><dt>MTTR, from a 75-minute baseline</dt><dd>53 min</dd><span class="tag"><span class="swatch real"></span>Plant data</span></div>
+      <div><dt>Machines with TPM standards</dt><dd>30+</dd></div>
     </dl>
 
-    <figure class="timing">
-      <figcaption>
-        <div class="timing-title">Mean time to repair (MTTR)</div>
-        <p class="timing-sub">The reporting framework set the baseline and tracked the action plans behind this change.</p>
-      </figcaption>
-      <div class="timing-grid">
-        <div class="scale" aria-hidden="true"><span>0</span><span>20</span><span>40</span><span>60</span><span>80 min</span></div>
+    <div class="project-body">
+      <div>
 
-        <div class="row-label">Baseline</div>
-        <div class="track"><span class="bar baseline" style="--v:0.9375"></span></div>
-        <div class="row-value"><strong>75 min</strong></div>
+        <section class="block" aria-labelledby="challenge-heading">
+          <h2 id="challenge-heading">The challenge</h2>
+          <p>With 25 production lines and 300+ machines, failure reports needed one common structure so downtime could be analyzed and attributed to the right area.</p>
+        </section>
 
-        <div class="row-label">After action plans</div>
-        <div class="track"><span class="bar real" style="--v:0.6625"></span></div>
-        <div class="row-value"><strong>53 min</strong> <span>plant data</span></div>
+        <section class="block" aria-labelledby="work-heading">
+          <h2 id="work-heading">What I did</h2>
+          <ul class="work">
+            <li>Built an end-to-end Power BI operations intelligence platform covering 25 production lines and 300+ machines, with drill-down by area, line, shift, technician and system, and an interactive failure analysis tool that links each event to its root cause.</li>
+            <li>Led the redesign of the plant failure reporting system, standardizing a failure classification by failure mode, affected component and responsible area, so downtime can be analyzed and attributed across functions.</li>
+            <li>Established the MTTR, MTBF and downtime reporting framework and calculated the reliability baseline, enabling line-level targets and supporting action plans that moved MTTR from a 75-minute baseline to 53 minutes.</li>
+            <li>Standardized autonomous maintenance (TPM) procedures, with visual work instructions and inspection checklists, across 30+ machines and 8 new production lines during ramp-up.</li>
+          </ul>
+        </section>
+
+        <section class="block" aria-labelledby="results-heading">
+          <h2 id="results-heading">Results</h2>
+          <figure class="timing">
+            <p class="timing-sub">Mean time to repair (MTTR). The reporting framework set the baseline and tracked the action plans behind this change.</p>
+            <div class="timing-grid">
+              <div class="scale" aria-hidden="true"><span>0</span><span>20</span><span>40</span><span>60</span><span>80 min</span></div>
+
+              <div class="row-label">Baseline</div>
+              <div class="track"><span class="bar baseline" style="--v:0.9375"></span></div>
+              <div class="row-value"><strong>75 min</strong></div>
+
+              <div class="row-label">After action plans</div>
+              <div class="track"><span class="bar real" style="--v:0.6625"></span></div>
+              <div class="row-value"><strong>53 min</strong> <span>plant data</span></div>
+            </div>
+            <ul class="legend">
+              <li><span class="swatch baseline"></span>Baseline</li>
+              <li><span class="swatch real"></span>Solid: real plant data</li>
+            </ul>
+          </figure>
+          <p class="note">Dashboard screenshots are not shown to protect plant data.</p>
+        </section>
+
       </div>
-      <ul class="legend">
-        <li><span class="swatch baseline"></span>Baseline</li>
-        <li><span class="swatch real"></span>Solid: real plant data</li>
-      </ul>
-    </figure>
 
-    <section class="body-section" aria-labelledby="work-heading">
-      <h2 id="work-heading">What I did</h2>
-      <ul class="work">
-        <li>Built an end-to-end Power BI operations intelligence platform covering 25 production lines and 300+ machines, with drill-down by area, line, shift, technician and system, and an interactive failure analysis tool that links each event to its root cause.</li>
-        <li>Led the redesign of the plant failure reporting system, standardizing a failure classification by failure mode, affected component and responsible area, so downtime can be analyzed and attributed across functions.</li>
-        <li>Established the MTTR, MTBF and downtime reporting framework and calculated the reliability baseline, enabling line-level targets and supporting action plans that moved MTTR from a 75-minute baseline to 53 minutes.</li>
-        <li>Standardized autonomous maintenance (TPM) procedures, with visual work instructions and inspection checklists, across 30+ machines and 8 new production lines during ramp-up.</li>
-      </ul>
-      <p class="muted">Dashboard screenshots are not shown to protect plant data.</p>
-    </section>
-
-    <section class="body-section" aria-labelledby="tools-heading">
-      <h2 id="tools-heading">Tools</h2>
-      <ul class="tools">
-        <li>Power BI</li>
-        <li>DAX</li>
-        <li>Power Query</li>
-        <li>Excel</li>
-      </ul>
-    </section>
+      <aside class="sidebar" aria-label="Project details">
+        <div class="sidebar-box">
+          <dl>
+            <div><dt>Company</dt><dd>Katcon, automotive supplier in Monterrey</dd></div>
+            <div><dt>My role</dt><dd>Maintenance intern</dd></div>
+            <div><dt>Dates</dt><dd>Sep 2025 – Jun 2026</dd></div>
+            <div><dt>Users</dt><dd>Maintenance supervisors</dd></div>
+          </dl>
+          <div class="tools-wrap">
+            <h3>Tools</h3>
+            <ul class="tools">
+              <li>Power BI</li>
+              <li>DAX</li>
+              <li>Power Query</li>
+              <li>Excel</li>
+            </ul>
+          </div>
+        </div>
+      </aside>
+    </div>
 
     <nav class="pager" aria-label="More projects">
       <a href="carrier.html"><small>Previous project</small>Automated robotic box folding cell</a>
-      <a href="../index.html"><small>Back to</small>All projects</a>
+      <a class="next" href="vitro.html"><small>Next project</small>Automated robotic insert loading cell</a>
     </nav>
 
-    <footer class="footer">
-      <p>Brandon Iván Lagunas Gaytán, Monterrey, México. <a href="mailto:blagunasg.a@gmail.com">blagunasg.a@gmail.com</a></p>
-    </footer>
+  </main>
 
-  </div>
+  <footer class="footer">
+    <div class="wrap">
+      <p>© 2026 Brandon Iván Lagunas Gaytán. <a href="mailto:blagunasg.a@gmail.com">blagunasg.a@gmail.com</a></p>
+    </div>
+  </footer>
+
 </body>
 </html>

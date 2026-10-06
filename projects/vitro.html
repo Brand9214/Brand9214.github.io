@@ -8,78 +8,115 @@
   <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-  <div class="wrap">
 
-    <nav class="topbar"><a href="../index.html">All projects</a></nav>
+  <nav class="site-nav" aria-label="Main">
+    <div class="wrap">
+      <a class="brand" href="../index.html">Brandon Lagunas</a>
+      <ul class="nav-links">
+        <li><a href="../index.html#projects">Projects</a></li>
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="wrap">
+
+    <div class="crumbs"><a href="../index.html#projects">Projects</a> / Vitro</div>
 
     <header class="project-head">
+      <div class="card-meta"><span class="partner">Vitro</span><span>Mar – Jun 2026</span><span>Project manager</span></div>
       <h1 class="project-title">Automated robotic insert loading cell</h1>
-      <p class="lede">Inserts were loaded by hand into an automotive glass molding press, in a 120-second manual cycle. Our team took the operation from a plant floor assessment to a robotic cell design and a working prototype that runs the full 12-insert sequence with the operator out of the press area.</p>
+      <p class="lede">A manual insert loading operation on an automotive glass molding press, taken from a plant floor assessment to a robotic cell design and a working prototype that runs the full 12-insert sequence with the operator out of the press area.</p>
     </header>
 
-    <dl class="titleblock" style="--cols:5">
-      <div><dt>Partner</dt><dd>Vitro, with Tecnológico de Monterrey</dd></div>
-      <div><dt>My role</dt><dd>Project manager</dd></div>
-      <div><dt>Dates</dt><dd>Mar – Jun 2026</dd></div>
-      <div><dt>Status</dt><dd>Cell validated in simulation, prototype built</dd></div>
-      <div><dt>Recognition</dt><dd>3rd place, Expo Ingenierías</dd></div>
+    <dl class="stats">
+      <div><dt>Manual cycle</dt><dd>120 s</dd></div>
+      <div><dt>Designed ABB cell cycle</dt><dd>&lt;50 s</dd><span class="tag"><span class="swatch sim"></span>Simulation</span></div>
+      <div><dt>UR3 prototype cycle</dt><dd>&lt;80 s</dd><span class="tag"><span class="swatch real"></span>Built and run</span></div>
+      <div><dt>Expo Ingenierías 2026</dt><dd>3rd place</dd></div>
     </dl>
 
-    <figure class="timing">
-      <figcaption>
-        <div class="timing-title">Cycle time for the 12-insert sequence</div>
-        <p class="timing-sub">The designed cell targets an ABB IRB 1300. The prototype proves the sequence on a smaller collaborative robot.</p>
-      </figcaption>
-      <div class="timing-grid">
-        <div class="scale" aria-hidden="true"><span>0</span><span>30</span><span>60</span><span>90</span><span>120 s</span></div>
+    <div class="project-body">
+      <div>
 
-        <div class="row-label">Manual operation</div>
-        <div class="track"><span class="bar baseline" style="--v:1"></span></div>
-        <div class="row-value"><strong>120 s</strong> <span>by hand</span></div>
+        <section class="block" aria-labelledby="challenge-heading">
+          <h2 id="challenge-heading">The challenge</h2>
+          <p>Inserts were loaded into the press by hand, in a 120-second manual cycle for the 12-insert sequence. The goal was to automate the loading and take the operator out of the press area.</p>
+        </section>
 
-        <div class="row-label">Designed ABB IRB 1300 cell</div>
-        <div class="track"><span class="bar sim" style="--v:0.4167"></span></div>
-        <div class="row-value"><strong>Under 50 s</strong> <span>in simulation</span></div>
+        <section class="block" aria-labelledby="work-heading">
+          <h2 id="work-heading">What I did</h2>
+          <ul class="work">
+            <li>Led the project from the plant floor assessment to the robotic cell, coordinating the mechanical, controls, vision and economic workstreams.</li>
+            <li>Designed the cell around an ABB IRB 1300 with PLC control and a custom three-finger gripper that handles four insert geometries without a tool change, with Cognex vision verifying every pick before the robot commits to it.</li>
+            <li>Built the system as a working prototype on a UR3 collaborative robot, running the complete loading sequence in under 80 seconds with the operator fully out of the press area.</li>
+          </ul>
+        </section>
 
-        <div class="row-label">UR3 working prototype</div>
-        <div class="track"><span class="bar real" style="--v:0.6667"></span></div>
-        <div class="row-value"><strong>Under 80 s</strong> <span>built and run</span></div>
+        <section class="block" aria-labelledby="results-heading">
+          <h2 id="results-heading">Results</h2>
+          <figure class="timing">
+            <p class="timing-sub">Cycle time for the 12-insert sequence. The designed cell targets an ABB IRB 1300; the prototype proves the sequence on a smaller collaborative robot.</p>
+            <div class="timing-grid">
+              <div class="scale" aria-hidden="true"><span>0</span><span>30</span><span>60</span><span>90</span><span>120 s</span></div>
+
+              <div class="row-label">Manual operation</div>
+              <div class="track"><span class="bar baseline" style="--v:1"></span></div>
+              <div class="row-value"><strong>120 s</strong> <span>by hand</span></div>
+
+              <div class="row-label">Designed ABB cell</div>
+              <div class="track"><span class="bar sim" style="--v:0.4167"></span></div>
+              <div class="row-value"><strong>Under 50 s</strong> <span>in simulation</span></div>
+
+              <div class="row-label">UR3 prototype</div>
+              <div class="track"><span class="bar real" style="--v:0.6667"></span></div>
+              <div class="row-value"><strong>Under 80 s</strong> <span>built and run</span></div>
+            </div>
+            <ul class="legend">
+              <li><span class="swatch sim"></span>Hatched: simulation</li>
+              <li><span class="swatch real"></span>Solid: physical prototype</li>
+            </ul>
+          </figure>
+        </section>
+
       </div>
-      <ul class="legend">
-        <li><span class="swatch sim"></span>Hatched: simulation</li>
-        <li><span class="swatch real"></span>Solid: physical prototype</li>
-      </ul>
-    </figure>
 
-    <section class="body-section" aria-labelledby="work-heading">
-      <h2 id="work-heading">What I did</h2>
-      <ul class="work">
-        <li>Led the project from the plant floor assessment to the robotic cell, coordinating the mechanical, controls, vision and economic workstreams.</li>
-        <li>Designed the cell around an ABB IRB 1300 with PLC control and a custom three-finger gripper that handles four insert geometries without a tool change, with Cognex vision verifying every pick before the robot commits to it. In simulation, the cell cuts the 120-second manual cycle to under 50 seconds.</li>
-        <li>Built the system as a working prototype on a UR3 collaborative robot, running the complete loading sequence in under 80 seconds with the operator fully out of the press area.</li>
-      </ul>
-    </section>
-
-    <section class="body-section" aria-labelledby="tools-heading">
-      <h2 id="tools-heading">Equipment and tools</h2>
-      <ul class="tools">
-        <li>ABB IRB 1300</li>
-        <li>Universal Robots UR3</li>
-        <li>PLC control</li>
-        <li>Cognex vision</li>
-        <li>Custom three-finger gripper</li>
-      </ul>
-    </section>
+      <aside class="sidebar" aria-label="Project details">
+        <div class="sidebar-box">
+          <dl>
+            <div><dt>Partner</dt><dd>Vitro, with Tecnológico de Monterrey</dd></div>
+            <div><dt>My role</dt><dd>Project manager</dd></div>
+            <div><dt>Dates</dt><dd>Mar – Jun 2026</dd></div>
+            <div><dt>Type</dt><dd>Team capstone project</dd></div>
+            <div><dt>Status</dt><dd>Cell validated in simulation, prototype built</dd></div>
+          </dl>
+          <div class="tools-wrap">
+            <h3>Equipment and tools</h3>
+            <ul class="tools">
+              <li>ABB IRB 1300</li>
+              <li>Universal Robots UR3</li>
+              <li>PLC control</li>
+              <li>Cognex vision</li>
+              <li>Custom gripper</li>
+            </ul>
+          </div>
+        </div>
+      </aside>
+    </div>
 
     <nav class="pager" aria-label="More projects">
-      <a href="../index.html"><small>Back to</small>All projects</a>
-      <a href="carrier.html"><small>Next project</small>Automated robotic box folding cell</a>
+      <a href="katcon.html"><small>Previous project</small>Operations intelligence platform</a>
+      <a class="next" href="carrier.html"><small>Next project</small>Automated robotic box folding cell</a>
     </nav>
 
-    <footer class="footer">
-      <p>Brandon Iván Lagunas Gaytán, Monterrey, México. <a href="mailto:blagunasg.a@gmail.com">blagunasg.a@gmail.com</a></p>
-    </footer>
+  </main>
 
-  </div>
+  <footer class="footer">
+    <div class="wrap">
+      <p>© 2026 Brandon Iván Lagunas Gaytán. <a href="mailto:blagunasg.a@gmail.com">blagunasg.a@gmail.com</a></p>
+    </div>
+  </footer>
+
 </body>
 </html>

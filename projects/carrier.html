@@ -16,93 +16,130 @@
     </defs>
   </svg>
 
-  <div class="wrap">
+  <nav class="site-nav" aria-label="Main">
+    <div class="wrap">
+      <a class="brand" href="../index.html">Brandon Lagunas</a>
+      <ul class="nav-links">
+        <li><a href="../index.html#projects">Projects</a></li>
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
 
-    <nav class="topbar"><a href="../index.html">All projects</a></nav>
+  <main class="wrap">
+
+    <div class="crumbs"><a href="../index.html#projects">Projects</a> / Carrier</div>
 
     <header class="project-head">
+      <div class="card-meta"><span class="partner">Carrier</span><span>Feb – Jun 2025</span></div>
       <h1 class="project-title">Automated robotic box folding cell</h1>
       <p class="lede">A robotic cell for folding boxes in four formats, designed with Carrier and sized with material flow and robot simulation. Every result on this page is a projection from the simulation model.</p>
     </header>
 
-    <dl class="titleblock" style="--cols:4">
-      <div><dt>Partner</dt><dd>Carrier, with Tecnológico de Monterrey</dd></div>
-      <div><dt>Dates</dt><dd>Feb – Jun 2025</dd></div>
-      <div><dt>Status</dt><dd>Projected from simulation</dd></div>
-      <div><dt>Projected payback</dt><dd>1.8 years</dd></div>
+    <dl class="stats">
+      <div><dt>Boxes per day, from 1,309</dt><dd>1,440</dd><span class="tag"><span class="swatch sim"></span>Projected</span></div>
+      <div><dt>Operator required, from 4</dt><dd>1</dd><span class="tag"><span class="swatch sim"></span>Projected</span></div>
+      <div><dt>Payback period</dt><dd>1.8 yr</dd><span class="tag"><span class="swatch sim"></span>Projected</span></div>
+      <div><dt>Box formats handled</dt><dd>4</dd></div>
     </dl>
 
-    <figure class="timing">
-      <figcaption>
-        <div class="timing-title">Daily output and operators required</div>
-        <p class="timing-sub">Starting point compared with the simulated cell.</p>
-      </figcaption>
-      <div class="timing-grid">
-        <div class="scale" aria-hidden="true"><span>0</span><span>400</span><span>800</span><span>1,200</span><span>1,600</span></div>
+    <div class="project-body">
+      <div>
 
-        <div class="row-label">Starting point</div>
-        <div class="track"><span class="bar baseline" style="--v:0.8181"></span></div>
-        <div class="row-value"><strong>1,309 boxes</strong> <span>per day</span></div>
+        <section class="block" aria-labelledby="challenge-heading">
+          <h2 id="challenge-heading">The challenge</h2>
+          <p>The folding operation needed four operators to produce 1,309 boxes a day across four box formats. The project was to design a robotic cell that could handle all four formats, and to check in simulation what it would deliver and how fast it would pay back.</p>
+        </section>
 
-        <div class="row-label">Robotic cell</div>
-        <div class="track"><span class="bar sim" style="--v:0.9"></span></div>
-        <div class="row-value"><strong>1,440 boxes</strong> <span>per day, projected</span></div>
+        <section class="block" aria-labelledby="work-heading">
+          <h2 id="work-heading">What I did</h2>
+          <ul class="work">
+            <li>Designed the cell layout integrating two UR10 collaborative robots, vacuum grippers, linear rails, conveyors and PLC-based control, with a Cognex vision system that detects lid size and automatically adjusts the fixture across four box formats.</li>
+            <li>Modeled material flow, cycle times, bottlenecks and work in process in Siemens Tecnomatix Plant Simulation, and validated robot trajectories in Process Simulate to size cell capacity.</li>
+            <li>Projected an increase in daily output from 1,309 to 1,440 boxes and a 75% reduction in required headcount, from 4 operators to 1, with a payback period of 1.8 years.</li>
+          </ul>
+        </section>
+
+        <section class="block" aria-labelledby="results-heading">
+          <h2 id="results-heading">Results</h2>
+          <figure class="timing">
+            <p class="timing-sub">Daily output and operators required: starting point compared with the simulated cell.</p>
+            <div class="timing-grid">
+              <div class="scale" aria-hidden="true"><span>0</span><span>400</span><span>800</span><span>1,200</span><span>1,600</span></div>
+
+              <div class="row-label">Starting point</div>
+              <div class="track"><span class="bar baseline" style="--v:0.8181"></span></div>
+              <div class="row-value"><strong>1,309 boxes</strong> <span>per day</span></div>
+
+              <div class="row-label">Robotic cell</div>
+              <div class="track"><span class="bar sim" style="--v:0.9"></span></div>
+              <div class="row-value"><strong>1,440 boxes</strong> <span>per day, projected</span></div>
+            </div>
+
+            <div class="operators">
+              <div class="row-label">Starting point</div>
+              <div class="people" aria-hidden="true">
+                <svg class="person" viewBox="0 0 16 30"><circle cx="8" cy="5" r="4.5" fill="currentColor"/><rect x="1" y="11.5" width="14" height="18.5" rx="5" fill="currentColor"/></svg>
+                <svg class="person" viewBox="0 0 16 30"><circle cx="8" cy="5" r="4.5" fill="currentColor"/><rect x="1" y="11.5" width="14" height="18.5" rx="5" fill="currentColor"/></svg>
+                <svg class="person" viewBox="0 0 16 30"><circle cx="8" cy="5" r="4.5" fill="currentColor"/><rect x="1" y="11.5" width="14" height="18.5" rx="5" fill="currentColor"/></svg>
+                <svg class="person" viewBox="0 0 16 30"><circle cx="8" cy="5" r="4.5" fill="currentColor"/><rect x="1" y="11.5" width="14" height="18.5" rx="5" fill="currentColor"/></svg>
+              </div>
+              <div class="row-value"><strong>4 operators</strong></div>
+
+              <div class="row-label">Robotic cell</div>
+              <div class="people" aria-hidden="true">
+                <svg class="person sim" viewBox="0 0 16 30"><circle cx="8" cy="5" r="4" fill="url(#hatch)" stroke="currentColor" stroke-width="1.5"/><rect x="1.75" y="12.25" width="12.5" height="17" rx="4.5" fill="url(#hatch)" stroke="currentColor" stroke-width="1.5"/></svg>
+              </div>
+              <div class="row-value"><strong>1 operator</strong> <span>projected</span></div>
+            </div>
+
+            <ul class="legend">
+              <li><span class="swatch baseline"></span>Starting point</li>
+              <li><span class="swatch sim"></span>Hatched: projection from simulation</li>
+            </ul>
+          </figure>
+        </section>
+
       </div>
 
-      <div class="operators">
-        <div class="row-label">Starting point</div>
-        <div class="people" aria-hidden="true">
-          <svg class="person" viewBox="0 0 16 30"><circle cx="8" cy="5" r="4.5" fill="currentColor"/><rect x="1" y="11.5" width="14" height="18.5" rx="5" fill="currentColor"/></svg>
-          <svg class="person" viewBox="0 0 16 30"><circle cx="8" cy="5" r="4.5" fill="currentColor"/><rect x="1" y="11.5" width="14" height="18.5" rx="5" fill="currentColor"/></svg>
-          <svg class="person" viewBox="0 0 16 30"><circle cx="8" cy="5" r="4.5" fill="currentColor"/><rect x="1" y="11.5" width="14" height="18.5" rx="5" fill="currentColor"/></svg>
-          <svg class="person" viewBox="0 0 16 30"><circle cx="8" cy="5" r="4.5" fill="currentColor"/><rect x="1" y="11.5" width="14" height="18.5" rx="5" fill="currentColor"/></svg>
+      <aside class="sidebar" aria-label="Project details">
+        <div class="sidebar-box">
+          <dl>
+            <div><dt>Partner</dt><dd>Carrier, with Tecnológico de Monterrey</dd></div>
+            <div><dt>Dates</dt><dd>Feb – Jun 2025</dd></div>
+            <div><dt>Type</dt><dd>Team capstone project</dd></div>
+            <div><dt>Status</dt><dd>Projected from simulation</dd></div>
+          </dl>
+          <div class="tools-wrap">
+            <h3>Equipment and tools</h3>
+            <ul class="tools">
+              <li>Universal Robots UR10</li>
+              <li>Tecnomatix Plant Simulation</li>
+              <li>Process Simulate</li>
+              <li>Cognex vision</li>
+              <li>Vacuum grippers</li>
+              <li>Linear rails</li>
+              <li>Conveyors</li>
+              <li>PLC-based control</li>
+            </ul>
+          </div>
         </div>
-        <div class="row-value"><strong>4 operators</strong></div>
-
-        <div class="row-label">Robotic cell</div>
-        <div class="people" aria-hidden="true">
-          <svg class="person sim" viewBox="0 0 16 30"><circle cx="8" cy="5" r="4" fill="url(#hatch)" stroke="currentColor" stroke-width="1.5"/><rect x="1.75" y="12.25" width="12.5" height="17" rx="4.5" fill="url(#hatch)" stroke="currentColor" stroke-width="1.5"/></svg>
-        </div>
-        <div class="row-value"><strong>1 operator</strong> <span>projected, 75% less</span></div>
-      </div>
-
-      <ul class="legend">
-        <li><span class="swatch baseline"></span>Starting point</li>
-        <li><span class="swatch sim"></span>Hatched: projection from simulation</li>
-      </ul>
-    </figure>
-
-    <section class="body-section" aria-labelledby="work-heading">
-      <h2 id="work-heading">What I did</h2>
-      <ul class="work">
-        <li>Designed the cell layout integrating two UR10 collaborative robots, vacuum grippers, linear rails, conveyors and PLC-based control, with a Cognex vision system that detects lid size and automatically adjusts the fixture across four box formats.</li>
-        <li>Modeled material flow, cycle times, bottlenecks and work in process in Siemens Tecnomatix Plant Simulation, and validated robot trajectories in Process Simulate to size cell capacity.</li>
-        <li>Projected an increase in daily output from 1,309 to 1,440 boxes and a 75% reduction in required headcount, from 4 operators to 1, with a payback period of 1.8 years.</li>
-      </ul>
-    </section>
-
-    <section class="body-section" aria-labelledby="tools-heading">
-      <h2 id="tools-heading">Equipment and tools</h2>
-      <ul class="tools">
-        <li>Universal Robots UR10</li>
-        <li>Siemens Tecnomatix Plant Simulation</li>
-        <li>Siemens Process Simulate</li>
-        <li>Cognex vision</li>
-        <li>Vacuum grippers</li>
-        <li>Linear rails and conveyors</li>
-        <li>PLC-based control</li>
-      </ul>
-    </section>
+      </aside>
+    </div>
 
     <nav class="pager" aria-label="More projects">
       <a href="vitro.html"><small>Previous project</small>Automated robotic insert loading cell</a>
-      <a href="katcon.html"><small>Next project</small>Operations intelligence platform</a>
+      <a class="next" href="katcon.html"><small>Next project</small>Operations intelligence platform</a>
     </nav>
 
-    <footer class="footer">
-      <p>Brandon Iván Lagunas Gaytán, Monterrey, México. <a href="mailto:blagunasg.a@gmail.com">blagunasg.a@gmail.com</a></p>
-    </footer>
+  </main>
 
-  </div>
+  <footer class="footer">
+    <div class="wrap">
+      <p>© 2026 Brandon Iván Lagunas Gaytán. <a href="mailto:blagunasg.a@gmail.com">blagunasg.a@gmail.com</a></p>
+    </div>
+  </footer>
+
 </body>
 </html>
