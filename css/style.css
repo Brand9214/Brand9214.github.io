@@ -8,16 +8,16 @@
 @font-face { font-family: "Barlow Condensed"; font-style: normal; font-weight: 700; font-display: swap; src: url("../fonts/barlow-condensed-latin-700-normal.woff2") format("woff2"); }
 
 :root {
-  --paper: #f3f5f8;
-  --card: #ffffff;
-  --surface: #e7ecf3;
-  --ink: #0f1c2e;
-  --steel: #526179;
-  --rule: #d2dae5;
-  --baseline: #8c99ad;
-  --accent: #1f5fd1;
-  --link: #1a56b8;
-  --panel: #0f1c2e;
+  --paper: #0b1220;
+  --card: #121b2d;
+  --surface: #1a2538;
+  --ink: #e6edf7;
+  --steel: #9fb0c8;
+  --rule: #25324a;
+  --baseline: #62728c;
+  --accent: #5aa2ff;
+  --link: #8cbcff;
+  --panel: #070d18;
   --panel-ink: #e6edf7;
   --panel-steel: #9fb0c8;
   --panel-rule: #263650;
@@ -25,23 +25,7 @@
   --panel-accent: #5aa2ff;
   --measure: 68ch;
   --gutter: 16px;
-  color-scheme: light;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --paper: #0b1220;
-    --card: #121b2d;
-    --surface: #1a2538;
-    --ink: #e6edf7;
-    --steel: #9fb0c8;
-    --rule: #25324a;
-    --baseline: #62728c;
-    --accent: #5aa2ff;
-    --link: #8cbcff;
-    --panel: #070d18;
-    color-scheme: dark;
-  }
+  color-scheme: dark;
 }
 
 *,
