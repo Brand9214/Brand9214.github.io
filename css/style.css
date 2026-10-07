@@ -555,7 +555,6 @@ p { margin: 0 0 1em; max-width: var(--measure); }
 
 .cover--steps { aspect-ratio: auto; }
 .cover--steps + .table-wrap { margin-top: 24px; }
-.cover + .note { margin-top: 12px; }
 
 .steps {
   list-style: none;
