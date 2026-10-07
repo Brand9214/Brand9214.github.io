@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Automated robotic insert loading cell | Brandon Lagunas</title>
-  <meta name="description" content="Vitro capstone: a manual insert loading operation on an automotive glass molding press, taken to an ABB IRB 1300 cell design and a UR3 working prototype.">
+  <meta name="description" content="Vitro project: a robotic cell that loads 12 inserts into an automotive window molding press, designed with an ABB IRB 1300 and validated in RobotStudio, plus a UR3 prototype built and tested in the lab.">
   <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
@@ -26,16 +26,19 @@
     <div class="crumbs"><a href="../index.html#projects">Projects</a> / Vitro</div>
 
     <header class="project-head">
-      <div class="card-meta"><span class="partner">Vitro</span><span>Mar – Jun 2026</span><span>Project manager</span></div>
+      <div class="card-meta"><span class="partner">Vitro</span><span>Mar – Jun 2026</span><span>Team of 4</span><span>3rd place, Expo Ingenierías</span></div>
       <h1 class="project-title">Automated robotic insert loading cell</h1>
-      <p class="lede">A manual insert loading operation on an automotive glass molding press, taken from a plant floor assessment to a robotic cell design and a working prototype that runs the full 12-insert sequence with the operator out of the press area.</p>
+      <p class="lede">A robotic cell that loads the 12 inserts of an automotive window into a molding press, so the operator no longer steps into the press area on every cycle. Cognex vision checks each insert before the robot picks it. Results for the industrial cell come from simulation and projections; prototype results were measured on the UR3 build in the lab.</p>
     </header>
 
-    <dl class="stats">
-      <div><dt>Manual cycle</dt><dd>120 s</dd></div>
-      <div><dt>Designed ABB cell cycle</dt><dd>&lt;50 s</dd><span class="tag"><span class="swatch sim"></span>Simulation</span></div>
-      <div><dt>UR3 prototype cycle</dt><dd>&lt;80 s</dd><span class="tag"><span class="swatch real"></span>Built and run</span></div>
-      <div><dt>Expo Ingenierías 2026</dt><dd>3rd place</dd></div>
+    <figure class="cover">
+      <img src="../img/vitro/cell-robotstudio.png" width="1151" height="644" alt="RobotStudio simulation of the industrial cell: an ABB IRB 1300 with its gripper reaching toward the two dark plates of the simplified press model, with the feed conveyor and insert trays in the foreground.">
+    </figure>
+
+    <dl class="stats stats--3">
+      <div><dt>Loading cycle, from 120 s by hand</dt><dd>&lt; 50 s</dd><span class="tag"><span class="swatch sim"></span>Simulation</span></div>
+      <div><dt>Full 12-insert cycle on the UR3 prototype</dt><dd>&lt; 80 s</dd><span class="tag"><span class="swatch real"></span>Prototype</span></div>
+      <div><dt>Correct Cognex detections across the four insert types</dt><dd>15/15</dd><span class="tag"><span class="swatch real"></span>Prototype</span></div>
     </dl>
 
     <div class="project-body">
@@ -43,42 +46,214 @@
 
         <section class="block" aria-labelledby="challenge-heading">
           <h2 id="challenge-heading">The challenge</h2>
-          <p>Inserts were loaded into the press by hand, in a 120-second manual cycle for the 12-insert sequence. The goal was to automate the loading and take the operator out of the press area.</p>
+          <p>At Vitro Monterrey's window molding press, an operator loaded 12 inserts by hand on every cycle: 4 short screws, 2 long screws, 4 rectangular pins and 2 cylindrical pins, each in a fixed position and orientation. That meant stepping into the press area and working in awkward postures for the full 120-second cycle.</p>
+          <p>The process had no check before the pick. A wrong insert showed up only after it was placed, when the Keyence sensors reported a bad position, or in the finished part, when it was too late to fix. The plant already had 12 Keyence FS-N40 sensors in the mold holes, but the loading itself had never been automated, and the cell had only 1.9 × 4.2 m of space. The project was to design a cell that takes the operator out of the press area, checks each insert before the pick and completes a loading cycle in 115 seconds or less.</p>
         </section>
 
         <section class="block" aria-labelledby="work-heading">
           <h2 id="work-heading">What I did</h2>
           <ul class="work">
-            <li>Led the project from the plant floor assessment to the robotic cell, coordinating the mechanical, controls, vision and economic workstreams.</li>
-            <li>Designed the cell around an ABB IRB 1300 with PLC control and a custom three-finger gripper that handles four insert geometries without a tool change, with Cognex vision verifying every pick before the robot commits to it.</li>
-            <li>Built the system as a working prototype on a UR3 collaborative robot, running the complete loading sequence in under 80 seconds with the operator fully out of the press area.</li>
+            <li>Led the project as project manager, planning and tracking the schedule and deliverables and coordinating the mechanical, controls, vision and economic workstreams, from the plant floor assessment at Vitro to the working prototype.</li>
+            <li>Designed the insert tray in CAD with a poka-yoke approach: fixed slots shaped to each of the four insert geometries, so every part sits in a known position before the robot picks it, preventing errors from the very first pick.</li>
+            <li>Designed the electrical and network architecture for both the industrial cell and the UR3 prototype, and wired the prototype in the lab.</li>
+            <li>Built the economic analysis for the industrial cell: investment, net annual savings and payback.</li>
           </ul>
+        </section>
+
+        <section class="block" aria-labelledby="systems-heading">
+          <h2 id="systems-heading">Two systems, one process</h2>
+          <p>This page covers two systems that run the same loading process but are not the same machine.</p>
+          <ul class="work">
+            <li><strong>Industrial cell, a design.</strong> An ABB IRB 1300-7/1.4 with its OmniCore controller, a central PLC and HMI, a three-finger gripper in 6061 aluminum that handles all four insert geometries without a tool change, a Cognex IS2800 camera, and the 12 Keyence FS-N40 sensors already in the press. It exists only in CAD and in the RobotStudio simulation.</li>
+            <li><strong>Prototype, built in the Smart Factory lab.</strong> A UR3 robot, a pneumatic two-finger gripper (PHD 19092-2) with 3D-printed PLA jaws, a 5/2 solenoid valve, the same Cognex IS2800, control from the teach pendant in PolyScope with no PLC and no Keyence sensors, and a mock-up of the press in MDF.</li>
+          </ul>
+        </section>
+
+        <section class="block" aria-labelledby="industrial-heading">
+          <h2 id="industrial-heading">Industrial cell</h2>
+          <p>The robot is an ABB IRB 1300-7/1.4 with a 7 kg payload, 1,400 mm reach and ±0.02 mm repeatability, programmed in RAPID. In the simulation the press is modeled in a simplified way, as two columns spaced like the real ones from the plans Vitro provided, which is enough to check that the robot reaches all 12 mold positions.</p>
+          <p>The gripper is a three-finger design in 6061 aluminum, CNC machined: three pneumatic units, each with two gripping jaws and a pushing jaw that seats the insert. The team chose it over an alternative that swaps tools automatically, which would add 9 to 15 seconds to every cycle, add weight against the 7 kg payload and add a mechanical failure point that could stop production. One tool for the whole cycle keeps the sequence short and the design simple.</p>
+          <ul class="gallery gallery--natural">
+            <li>
+              <figure>
+                <img src="../img/vitro/gripper-cad.png" width="482" height="402" loading="lazy" alt="CAD model of the three-finger gripper: a round yellow body with three angled pneumatic units below it.">
+                <figcaption>CAD model of the industrial three-finger gripper.</figcaption>
+              </figure>
+            </li>
+            <li>
+              <figure>
+                <img src="../img/vitro/gripper-drawing.png" width="615" height="431" loading="lazy" alt="Technical drawing of the three-finger gripper with five views and main dimensions.">
+                <figcaption>Drawing of the gripper with its main views.</figcaption>
+              </figure>
+            </li>
+          </ul>
+        </section>
+
+        <section class="block" aria-labelledby="tray-heading">
+          <h2 id="tray-heading">Insert tray</h2>
+          <p>The tray organizes the four insert types in fixed zones, one per geometry: short screws, long screws, rectangular pins and cylindrical pins. It follows a poka-yoke approach, with slots shaped to each insert, so every part sits in a known position before the robot picks it and mix-ups are prevented from the very first pick. That removes variability at the source and makes the camera's check simpler. The operator loads the tray at the start of each shift and does not step in during the cycle.</p>
+          <ul class="work">
+            <li>The prototype tray is 3D printed in PLA (FDM), 170 × 65 × 11.5 mm, with a tolerance of ±0.2 mm, and is bolted to the MDF table.</li>
+            <li>For the industrial cell, the report recommends CNC machining instead of 3D printing, for durability and dimensional precision in continuous production.</li>
+          </ul>
+          <ul class="gallery gallery--natural">
+            <li>
+              <figure>
+                <img src="../img/vitro/tray-cad-iso.png" width="1342" height="865" loading="lazy" alt="Isometric CAD view of the insert tray: curved guides for the cylindrical pins, square pockets for the rectangular pins and U-shaped guides for the screws, with four mounting tabs.">
+                <figcaption>Insert tray in CAD, isometric view.</figcaption>
+              </figure>
+            </li>
+            <li>
+              <figure>
+                <img src="../img/vitro/tray-cad-top.png" width="1434" height="809" loading="lazy" alt="Top view of the insert tray CAD: two columns of zones for cylindrical pins, four for rectangular pins and six rows of screw slots.">
+                <figcaption>Top view: one fixed zone per insert geometry.</figcaption>
+              </figure>
+            </li>
+            <li>
+              <figure>
+                <img src="../img/vitro/tray-printed.jpg" width="960" height="1280" loading="lazy" alt="The 3D-printed tray in pink PLA on the MDF table, with its slots visible.">
+                <figcaption>The printed tray on the prototype table.</figcaption>
+              </figure>
+            </li>
+          </ul>
+        </section>
+
+        <section class="block" aria-labelledby="control-heading">
+          <h2 id="control-heading">Control and network</h2>
+          <p><strong>Industrial cell.</strong> A central PLC coordinates the whole cycle. It receives the start signal from the press, sets the pick order for the 12 inserts, allows each robot move only after the camera validates the part, and sends trajectory commands to the ABB OmniCore controller, which executes them. It also checks the Keyence confirmation of each position and signals the press that the cycle is complete only when all 12 sensors confirm. The press and the PLC exchange start and cycle-complete signals over the existing 16-pin Harting connector at 24 V DC, and the PLC and OmniCore talk over Ethernet/Profinet. A touchscreen HMI outside the cell shows the system state, shows alarms that name the position or subsystem that failed, and has the emergency stop.</p>
+          <p><strong>Prototype.</strong> There is no PLC. The UR3 runs the whole sequence from its teach pendant in PolyScope. The Cognex camera talks to the robot controller over Ethernet through a switch, and the double-acting two-finger gripper opens and closes through a 5/2 solenoid valve whose coil is driven from digital output DO4 of the UR3. Two indicator lights show the camera result.</p>
+          <div class="table-wrap">
+            <table class="risk-table risk-table--rating">
+              <caption>UR3 digital inputs and outputs used in the prototype.</caption>
+              <thead>
+                <tr><th scope="col">Signal</th><th scope="col">Function</th><th scope="col">Type</th></tr>
+              </thead>
+              <tbody>
+                <tr><th scope="row">DO0</th><td>Triggers a Cognex photo</td><td>Output</td></tr>
+                <tr><th scope="row">DO1</th><td>Cognex camera online</td><td>Output</td></tr>
+                <tr><th scope="row">DO4</th><td>Gripper solenoid valve (24 V DC)</td><td>Output</td></tr>
+                <tr><th scope="row">DO5</th><td>Green light: detection OK</td><td>Output</td></tr>
+                <tr><th scope="row">DO6</th><td>Orange light: Cognex detection error</td><td>Output</td></tr>
+                <tr><th scope="row">DI5</th><td>Cognex OK signal</td><td>Input</td></tr>
+                <tr><th scope="row">DI6</th><td>Cognex NOK signal</td><td>Input</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <details class="more">
+            <summary>See the original block diagram and UR3 wiring diagram from the report</summary>
+            <img src="../img/vitro/block-diagram.jpg" width="1377" height="768" loading="lazy" alt="Block diagram of the two-level industrial system: HMI, central PLC, ABB OmniCore and the press at the control level, and the feeding tray, Cognex IS2800, ABB IRB 1300 with gripper and the press mold at the field level.">
+            <img src="../img/vitro/ur3-wiring.jpg" width="1535" height="1024" loading="lazy" alt="Wiring diagram of the UR3 prototype: teach pendant, UR3 controller, Ethernet switch, Cognex camera, 5/2 solenoid valve, double-acting gripper, compressed air supply and the two indicator lights.">
+          </details>
+          <p class="note">The original diagrams keep their Spanish labels.</p>
+        </section>
+
+        <section class="block" aria-labelledby="vision-heading">
+          <h2 id="vision-heading">Vision</h2>
+          <p><strong>Industrial cell.</strong> The Cognex IS2800 gets the inspection order from the PLC and captures the insert in its tray zone at 1440 × 1080 pixels, with a response time under 100 ms. It identifies the part type, checks its orientation against the mold's reference axis and sends an OK or error signal to the PLC before the robot moves to pick. After the placement, the 12 Keyence FS-N40 sensors confirm each insert position by position. Together they form two barriers, one before the pick and one after the place. In the design logic, an insert that is not confirmed triggers an automatic reinsertion: the robot identifies the missing insert and places a new one.</p>
+          <p><strong>Prototype.</strong> The prototype has the camera but no Keyence sensors, so the check happens only before the pick. The camera was tested 15 times across the four insert types and detected every insert correctly, against a goal of at least 95%.</p>
+          <figure class="plate">
+            <img src="../img/vitro/cognex-inspection.png" width="1363" height="574" loading="lazy" alt="Cognex In-Sight Explorer screen showing the printed tray with all 12 inserts marked Aceptar, and a list of the 12 inspection tools with their processing times under 80 ms.">
+            <figcaption>Cognex In-Sight Explorer on the prototype tray: all 12 insert tools read "Aceptar" (accept).</figcaption>
+          </figure>
+        </section>
+
+        <section class="block" aria-labelledby="prototype-heading">
+          <h2 id="prototype-heading">Prototype</h2>
+          <p>The prototype is a working mock-up of the press, built in the Smart Factory lab at Tecnológico de Monterrey. An MDF plate (122 × 40 cm) stands in for the upper half of the mold, held by two steel pillars at the UR3's working height. Under it, 12 holders with holes, one per insert and 3D printed, copy the layout of the real mold, with modeling clay inside each hole to keep the inserts in place. Vitro gave the overall press dimensions and working area but not the exact hole positions, so the layout is representative rather than exact. As in the real operation, the robot reaches in from below and lifts its arm to push each insert up into the mold.</p>
+          <p>The sequence runs from PolyScope. The arm starts from a safe home position and moves to the tray. Before each pick it triggers the Cognex camera. On an OK result the green light turns on, the valve closes the gripper, and the robot carries the insert to its position in the mold and releases it. On a NOK result the orange light turns on, and the robot waits and retries the capture without picking. This repeats for all 12 inserts, and the robot returns home. On the UR3 build the full cycle ran in under 80 seconds, with all 12 inserts placed correctly and the operator outside the press area.</p>
+          <figure class="plate">
+            <img src="../img/vitro/prototype-lab.jpg" width="1433" height="1080" loading="lazy" alt="The prototype in the lab: the MDF press mock-up with the camera above it, the UR3 with its gripper at the right, and the insert tray on the table, each labeled in Spanish.">
+            <figcaption>The prototype in the lab: press mock-up, camera, gripper and insert tray. Labels are in Spanish.</figcaption>
+          </figure>
+          <ul class="gallery gallery--natural">
+            <li>
+              <figure>
+                <img src="../img/vitro/prototype-gripper.jpg" width="503" height="792" loading="lazy" alt="Close-up of the prototype gripper: a 3D-printed adapter above a pneumatic two-finger gripper with printed jaws, over the insert tray.">
+                <figcaption>The prototype's two-finger gripper with printed jaws, over the tray.</figcaption>
+              </figure>
+            </li>
+          </ul>
+        </section>
+
+        <section class="block" aria-labelledby="safety-heading">
+          <h2 id="safety-heading">Safety</h2>
+          <p>The industrial cell was designed against NOM-004-STPS-1999 and ISO 10218-2:2025. Both put eliminating the worker's exposure to the risk zone ahead of only reducing it, and that is the idea behind the design: the operator no longer enters the press area during the automatic cycle. The cell is enclosed by perimeter fencing with interlocks, and the HMI sits outside, so the operator supervises the process and can reach the emergency stop without going in.</p>
         </section>
 
         <section class="block" aria-labelledby="results-heading">
           <h2 id="results-heading">Results</h2>
+
           <figure class="timing">
-            <p class="timing-sub">Cycle time for the 12-insert sequence. The designed cell targets an ABB IRB 1300; the prototype proves the sequence on a smaller collaborative robot.</p>
+            <p class="timing-sub">Loading cycle for the 12 inserts. The industrial cell is a design checked in RobotStudio; the prototype was built and run on a UR3.</p>
             <div class="timing-grid">
               <div class="scale" aria-hidden="true"><span>0</span><span>30</span><span>60</span><span>90</span><span>120 s</span></div>
 
-              <div class="row-label">Manual operation</div>
+              <div class="row-label">Manual loading</div>
               <div class="track"><span class="bar baseline" style="--v:1"></span></div>
               <div class="row-value"><strong>120 s</strong> <span>by hand</span></div>
 
-              <div class="row-label">Designed ABB cell</div>
+              <div class="row-label">Industrial cell (design)</div>
               <div class="track"><span class="bar sim" style="--v:0.4167"></span></div>
               <div class="row-value"><strong>Under 50 s</strong> <span>in simulation</span></div>
 
-              <div class="row-label">UR3 prototype</div>
+              <div class="row-label">UR3 prototype (built)</div>
               <div class="track"><span class="bar real" style="--v:0.6667"></span></div>
-              <div class="row-value"><strong>Under 80 s</strong> <span>built and run</span></div>
+              <div class="row-value"><strong>Under 80 s</strong> <span>measured in the lab</span></div>
             </div>
             <ul class="legend">
+              <li><span class="swatch baseline"></span>Manual operation</li>
               <li><span class="swatch sim"></span>Hatched: simulation</li>
               <li><span class="swatch real"></span>Solid: physical prototype</li>
             </ul>
           </figure>
+
+          <p>The RobotStudio simulation checked four things: the layout fits the 1.9 × 4.2 m area, the robot reaches all 12 mold positions, nothing collides, and the cycle comes in under the 115-second target, at under 50 seconds.</p>
+
+          <p>For the industrial cell, the base scenario assumes an investment of about $54,000 and net annual savings of $19,200, which is $24,000 of direct labor minus $4,800 of maintenance. That gives a payback of about 2.8 years and a positive net present value over five years at a 10% discount rate.</p>
+
+          <figure class="timing">
+            <p class="timing-sub">Cumulative net savings of the industrial cell, base scenario, in US dollars.</p>
+            <div class="timing-grid">
+              <div class="scale" aria-hidden="true"><span>−$60k</span><span>−$30k</span><span>0</span><span>+$30k</span><span>+$60k</span></div>
+
+              <div class="row-label">Year 0</div>
+              <div class="track"><span class="bar sim" style="--v:0.45;left:5%"></span></div>
+              <div class="row-value"><strong>−$54,000</strong> <span>investment</span></div>
+
+              <div class="row-label">Year 1</div>
+              <div class="track"><span class="bar sim" style="--v:0.29;left:21%"></span></div>
+              <div class="row-value"><strong>−$34,800</strong></div>
+
+              <div class="row-label">Year 2</div>
+              <div class="track"><span class="bar sim" style="--v:0.13;left:37%"></span></div>
+              <div class="row-value"><strong>−$15,600</strong></div>
+
+              <div class="row-label">Year 3</div>
+              <div class="track"><span class="bar sim" style="--v:0.03;left:50%"></span></div>
+              <div class="row-value"><strong>+$3,600</strong> <span>past payback</span></div>
+
+              <div class="row-label">Year 4</div>
+              <div class="track"><span class="bar sim" style="--v:0.19;left:50%"></span></div>
+              <div class="row-value"><strong>+$22,800</strong></div>
+
+              <div class="row-label">Year 5</div>
+              <div class="track"><span class="bar sim" style="--v:0.35;left:50%"></span></div>
+              <div class="row-value"><strong>+$42,000</strong> <span>projected</span></div>
+            </div>
+            <ul class="legend">
+              <li><span class="swatch sim"></span>Hatched: projection</li>
+            </ul>
+          </figure>
+
+          <p>Watch the team's <a href="https://drive.google.com/file/d/1o_k1DB6MaqKk7Chijla-QG1n3UHvlIE_/view" target="_blank" rel="noopener">RobotStudio simulation</a> and the <a href="https://drive.google.com/file/d/1dvCJMhmD1G_Fug0xIZEpjdAXU93-AJfv/view" target="_blank" rel="noopener">prototype video</a>.</p>
+          <p class="note">Figures, tables and results come from the team's integrated technical report for the course, dated June 12, 2026.</p>
+        </section>
+
+        <section class="block" aria-labelledby="learned-heading">
+          <h2 id="learned-heading">What I learned</h2>
+          <p><strong>Separate the industrial design from the prototype.</strong> The prototype gave up the PLC, the Keyence sensors and the three-finger gripper on purpose. That trade let us prove the working principle within the lab's limits and schedule, while the industrial design kept the full architecture.</p>
+          <p><strong>Prevent errors at the source.</strong> The manual process finds a wrong insert only after it is placed. The poka-yoke tray and the camera check before the pick move that control to the start of the cycle, before an error reaches the mold.</p>
+          <p><strong>One process, two control architectures.</strong> The same pick-and-place logic with a vision check had to run on two very different setups: a central PLC and the OmniCore controller in the industrial cell, and the UR3's own teach pendant and I/O in the prototype.</p>
         </section>
 
       </div>
@@ -88,18 +263,27 @@
           <dl>
             <div><dt>Partner</dt><dd>Vitro, with Tecnológico de Monterrey</dd></div>
             <div><dt>My role</dt><dd>Project manager</dd></div>
+            <div><dt>Context</dt><dd>Mechatronic systems design and implementation course</dd></div>
             <div><dt>Dates</dt><dd>Mar – Jun 2026</dd></div>
-            <div><dt>Type</dt><dd>Team capstone project</dd></div>
-            <div><dt>Status</dt><dd>Cell validated in simulation, prototype built</dd></div>
+            <div><dt>Type</dt><dd>Team project, four students</dd></div>
+            <div><dt>Status</dt><dd>Industrial cell designed and validated in simulation; prototype built and tested on a UR3</dd></div>
           </dl>
           <div class="tools-wrap">
             <h3>Equipment and tools</h3>
             <ul class="tools">
-              <li>ABB IRB 1300</li>
+              <li>ABB IRB 1300-7/1.4 + OmniCore</li>
+              <li>RobotStudio</li>
               <li>Universal Robots UR3</li>
-              <li>PLC control</li>
-              <li>Cognex vision</li>
-              <li>Custom gripper</li>
+              <li>PolyScope</li>
+              <li>Cognex In-Sight 2800</li>
+              <li>In-Sight Explorer</li>
+              <li>PHD 19092-2 pneumatic gripper</li>
+              <li>5/2 solenoid valve</li>
+              <li>Keyence FS-N40 (existing in plant)</li>
+              <li>SolidWorks</li>
+              <li>FDM 3D printing (PLA)</li>
+              <li>NOM-004-STPS-1999</li>
+              <li>ISO 10218-2:2025</li>
             </ul>
           </div>
         </div>
