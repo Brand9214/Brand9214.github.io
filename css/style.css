@@ -650,3 +650,87 @@ p { margin: 0 0 1em; max-width: var(--measure); }
   .hero { padding: 40px 0 16px; }
   .section { padding-top: 56px; }
 }
+
+/* ---------- ASTRØ-NØVA: photo cover, architecture diagram, video embeds ---------- */
+
+.cover--photo { aspect-ratio: 16 / 9; }
+.cover--photo img { object-fit: contain; }
+
+.block > h3 { font-size: 1.5rem; margin: 32px 0 12px; }
+
+.risk-table code { font-family: ui-monospace, "Cascadia Mono", Consolas, monospace; font-size: 0.8125rem; color: var(--ink); white-space: nowrap; }
+.risk-table--text { min-width: 0; }
+.risk-table--text thead th,
+.risk-table--text tbody td { text-align: left; }
+.risk-table--text tbody th[rowspan] { border-right: 1px solid var(--rule); }
+
+.plate--narrow { max-width: 520px; margin-left: auto; margin-right: auto; }
+.gallery--3 { align-items: start; }
+@media (min-width: 800px) { .gallery--3 { grid-template-columns: repeat(3, 1fr); } }
+.gallery--dark img { background: var(--panel); }
+
+.cover--arch { aspect-ratio: auto; padding: clamp(16px, 3vw, 28px); color: var(--panel-ink); }
+.arch { display: grid; }
+.arch-block {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 14px 14px 16px;
+  border: 1px solid var(--panel-rule);
+  border-radius: 4px;
+  background: color-mix(in srgb, var(--card) 70%, var(--panel));
+}
+.arch-block > h3 {
+  font-size: 1.125rem;
+  padding-bottom: 8px;
+  margin-bottom: 4px;
+  border-bottom: 2px solid var(--panel-accent);
+}
+.arch-node {
+  padding: 8px 10px;
+  border: 1px solid var(--panel-rule);
+  border-radius: 3px;
+  background: var(--panel);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  line-height: 1.3;
+}
+.arch-node small { display: block; margin-top: 2px; color: var(--panel-steel); font-size: 0.8125rem; font-weight: 400; }
+.arch-nodes { display: grid; gap: 8px; grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr)); }
+.arch-row { display: grid; align-items: center; }
+
+.arch-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 6px 0;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--panel-ink);
+}
+.arch-line { position: relative; flex: none; width: 2px; height: 34px; background: var(--panel-accent); }
+.arch-line::before,
+.arch-line::after { content: ""; position: absolute; left: 50%; margin-left: -5px; border: 5px solid transparent; }
+.arch-line::before { top: -1px; border-top: 0; border-bottom: 7px solid var(--panel-accent); }
+.arch-line::after { bottom: -1px; border-bottom: 0; border-top: 7px solid var(--panel-accent); }
+
+@media (min-width: 600px) {
+  .arch-row { grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); }
+  .arch-row > .arch-link { flex-direction: column; gap: 6px; padding: 0 14px; text-align: center; }
+  .arch-row > .arch-link .arch-line { width: 44px; height: 2px; }
+  .arch-row > .arch-link .arch-line::before,
+  .arch-row > .arch-link .arch-line::after { top: 50%; bottom: auto; left: auto; margin: -5px 0 0; }
+  .arch-row > .arch-link .arch-line::before { left: -1px; border: 5px solid transparent; border-left: 0; border-right: 7px solid var(--panel-accent); }
+  .arch-row > .arch-link .arch-line::after { right: -1px; border: 5px solid transparent; border-right: 0; border-left: 7px solid var(--panel-accent); }
+}
+
+.video { margin: 24px 0; }
+.video-frame { position: relative; aspect-ratio: 16 / 9; overflow: hidden; border: 1px solid var(--rule); border-radius: 4px; background: var(--panel); }
+.video-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.video figcaption { font-size: 0.875rem; color: var(--steel); margin-top: 6px; }
+.video--vertical .video-frame,
+.video--vertical figcaption { max-width: 340px; margin-left: auto; margin-right: auto; }
+.video--vertical .video-frame { aspect-ratio: 9 / 16; }
+.video--vertical figcaption { margin-top: 6px; }

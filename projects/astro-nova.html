@@ -1,0 +1,589 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ASTRØ-NØVA autonomous rover | Brandon Lagunas</title>
+  <meta name="description" content="ASTRØ-NØVA: a small-scale exploration rover that drives itself with A* route planning, avoids obstacles, takes photos with a camera payload and sends telemetry to a ground station over LoRa. Built and tested by a team of three at Tecnológico de Monterrey.">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="i-target" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="24" r="16"/><circle cx="24" cy="24" r="8"/><circle cx="24" cy="24" r="1.5" fill="currentColor"/><path d="M24 4v6M24 38v6M4 24h6M38 24h6"/></g></symbol>
+      <symbol id="i-blocks" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="6" width="16" height="11" rx="2"/><rect x="28" y="6" width="16" height="11" rx="2"/><rect x="16" y="31" width="16" height="11" rx="2"/><path d="M12 17v7h24v-7M24 24v7"/></g></symbol>
+      <symbol id="i-tree" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="15" y="5" width="18" height="10" rx="2"/><rect x="3" y="31" width="12" height="11" rx="2"/><rect x="18" y="31" width="12" height="11" rx="2"/><rect x="33" y="31" width="12" height="11" rx="2"/><path d="M24 15v8M9 31v-8h30v8M24 23v8"/></g></symbol>
+      <symbol id="i-interfaces" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="12" width="12" height="24" rx="2"/><rect x="33" y="12" width="12" height="24" rx="2"/><path d="M19 19h10M26 15l4 4-4 4M29 29H19M22 25l-4 4 4 4"/></g></symbol>
+      <symbol id="i-chip-check" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="12" y="12" width="24" height="24" rx="3"/><path d="M18 5v7M30 5v7M18 36v7M30 36v7M5 18h7M5 30h7M36 18h7M36 30h7"/><path d="M19 24l4 4 7-8"/></g></symbol>
+      <symbol id="i-simulation" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="7" width="38" height="28" rx="3"/><path d="M17 41h14M24 35v6"/><path d="M12 28h8V18h10v-5" stroke-dasharray="3 3"/><circle cx="35" cy="13" r="2.5"/></g></symbol>
+      <symbol id="i-layers" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M24 6l18 9-18 9-18-9z"/><path d="M6 24l18 9 18-9"/><path d="M6 33l18 9 18-9"/></g></symbol>
+      <symbol id="i-clipboard-check" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="8" width="30" height="34" rx="3"/><path d="M18 8V5h12v3"/><path d="M16 26l5 5 11-12"/></g></symbol>
+    </defs>
+  </svg>
+
+  <nav class="site-nav" aria-label="Main">
+    <div class="wrap">
+      <a class="brand" href="../index.html">Brandon Lagunas</a>
+      <ul class="nav-links">
+        <li><a href="../index.html#projects">Projects</a></li>
+        <li><a href="../index.html#about">About</a></li>
+        <li class="optional"><a href="../index.html#activities">Activities</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="wrap">
+
+    <div class="crumbs"><a href="../index.html#projects">Projects</a> / ASTRØ-NØVA</div>
+
+    <header class="project-head">
+      <div class="card-meta"><span class="partner">Tecnológico de Monterrey</span><span>Aug – Dec 2025</span><span>Team of 3</span></div>
+      <h1 class="project-title">ASTRØ-NØVA autonomous rover</h1>
+      <p class="lede">A small-scale exploration rover inspired by planetary missions. It drives itself from A to B with A* route planning, avoids obstacles, takes photos on demand with its camera payload and sends telemetry and images to a ground station over LoRa. Designed, built and tested by a team of three; every result on this page was measured on the built rover.</p>
+    </header>
+
+    <figure class="cover cover--photo">
+      <img src="../img/astro-nova/rover-main.webp" width="1600" height="900" alt="The assembled ASTRØ-NØVA rover: a grey 3D printed two-level chassis with a faceted cover, blue wheels and a camera board on a servo mount at the front.">
+    </figure>
+
+    <dl class="stats stats--3">
+      <div><dt>Battery life at maximum load, against 2 h 39 min estimated</dt><dd>4 h 28 min</dd><span class="tag"><span class="swatch real"></span>Measured</span></div>
+      <div><dt>Custom PCBs: rover, camera and ground station</dt><dd>3</dd><span class="tag"><span class="swatch real"></span>Built</span></div>
+      <div><dt>Programs working together: rover, camera, ground station and interface</dt><dd>4</dd><span class="tag"><span class="swatch real"></span>Built</span></div>
+    </dl>
+
+    <div class="project-body">
+      <div>
+
+        <section class="block" aria-labelledby="mission-heading">
+          <h2 id="mission-heading">The mission</h2>
+          <p>Planetary rovers like Curiosity and Perseverance can't be driven in real time from Earth. The communication delay is too long, so they have to follow planned routes and avoid obstacles on their own while they explore and send back data. ASTRØ-NØVA recreates that mission at small scale.</p>
+          <p>On a flat, mapped area with fixed limits, the rover had to reach a target point without anyone driving it, avoiding real obstacles detected by its sensors and virtual ones defined in software. Along the way, its camera payload had to take inspection photos on demand, and the ground segment had to receive telemetry and images in real time. Everything had to fit within a 20 × 20 cm footprint.</p>
+          <figure class="plate">
+            <img src="../img/astro-nova/mission-test-floor.webp" width="848" height="480" loading="lazy" alt="The small rover on a laboratory floor among a few boxes, with the ground control interface (grid map, current and signal plots, telemetry and controls) overlaid on the right.">
+            <figcaption>The rover on the test floor, with the ground control interface.</figcaption>
+          </figure>
+        </section>
+
+        <section class="block" aria-labelledby="work-heading">
+          <h2 id="work-heading">What I did</h2>
+          <ul class="work">
+            <li>Designed the rover's entire mechanical CAD: a modular two-level chassis on a 20 × 20 cm footprint, with the battery bay, motor mounts, sensor walls, camera servo mount and cover, 3D printed in PLA with TPU tires.</li>
+            <li>Programmed the ground control interface in Python: the grid map with physical and virtual obstacles, manual and autonomous modes, live telemetry, current and signal plots with CSV export, and photo capture.</li>
+            <li>Programmed part of the autonomous motion, mainly the stepper-motor step calculation for the rover's 90° turns, and some of the rover's sensors.</li>
+            <li>Soldered components and ran most of the tests on the assembled rover: moves, turns and error cases.</li>
+            <li>Analyzed the rover's power consumption in MATLAB from the current data logged through the interface.</li>
+          </ul>
+        </section>
+
+        <section class="block" aria-labelledby="se-heading">
+          <h2 id="se-heading">Systems engineering approach</h2>
+
+          <figure class="cover cover--steps">
+            <ol class="steps steps--8" aria-label="The eight steps of the project, from the mission objectives to the full-system validation">
+              <li><span class="step-icon"><svg aria-hidden="true" focusable="false"><use href="#i-target"/></svg><span class="step-num" aria-hidden="true">1</span></span><span class="step-title">Mission objectives</span><span class="step-text">General objective and eight specific objectives</span></li>
+              <li><span class="step-icon"><svg aria-hidden="true" focusable="false"><use href="#i-blocks"/></svg><span class="step-num" aria-hidden="true">2</span></span><span class="step-title">Functional architecture</span><span class="step-text">One for the whole system and one per subsystem</span></li>
+              <li><span class="step-icon"><svg aria-hidden="true" focusable="false"><use href="#i-tree"/></svg><span class="step-num" aria-hidden="true">3</span></span><span class="step-title">Work breakdown</span><span class="step-text">Mechanical, electronics and power, firmware and software</span></li>
+              <li><span class="step-icon"><svg aria-hidden="true" focusable="false"><use href="#i-interfaces"/></svg><span class="step-num" aria-hidden="true">4</span></span><span class="step-title">Interfaces</span><span class="step-text">Command protocol between rover, ground station and interface</span></li>
+              <li><span class="step-icon"><svg aria-hidden="true" focusable="false"><use href="#i-chip-check"/></svg><span class="step-num" aria-hidden="true">5</span></span><span class="step-title">Component tests</span><span class="step-text">Motors and drivers, current sensor, IMU, distance sensors, temperature sensor, camera servo</span></li>
+              <li><span class="step-icon"><svg aria-hidden="true" focusable="false"><use href="#i-simulation"/></svg><span class="step-num" aria-hidden="true">6</span></span><span class="step-title">Simulation</span><span class="step-text">A* logic tested in Processing before the real rover</span></li>
+              <li><span class="step-icon"><svg aria-hidden="true" focusable="false"><use href="#i-layers"/></svg><span class="step-num" aria-hidden="true">7</span></span><span class="step-title">Integration</span><span class="step-text">Custom PCBs, wiring and the assembled rover</span></li>
+              <li><span class="step-icon"><svg aria-hidden="true" focusable="false"><use href="#i-clipboard-check"/></svg><span class="step-num" aria-hidden="true">8</span></span><span class="step-title">Validation</span><span class="step-text">Full-system tests and the power budget against measurements</span></li>
+            </ol>
+          </figure>
+
+          <p>The project followed a systems engineering approach, run like a small space mission: from the mission objectives to a functional architecture for each subsystem, defined interfaces, component-level tests, simulation, integration and full-system validation.</p>
+        </section>
+
+        <section class="block" aria-labelledby="arch-heading">
+          <h2 id="arch-heading">Mission architecture</h2>
+
+          <figure class="cover cover--arch">
+            <div class="arch" role="group" aria-label="Mission architecture: the ground segment talks to the rover over LoRa, and the rover talks to the camera payload over UART">
+              <section class="arch-block" aria-label="Ground segment">
+                <h3>Ground segment</h3>
+                <div class="arch-row">
+                  <div class="arch-node">Ground control interface<small>Python, runs the A* route planning</small></div>
+                  <div class="arch-link"><span class="arch-line" aria-hidden="true"></span><span>USB serial</span></div>
+                  <div class="arch-node">Ground station<small>ESP32 + LoRa</small></div>
+                </div>
+              </section>
+
+              <div class="arch-link"><span class="arch-line" aria-hidden="true"></span><span>LoRa 433 MHz</span></div>
+
+              <section class="arch-block" aria-label="Rover">
+                <h3>Rover</h3>
+                <div class="arch-row">
+                  <div class="arch-node">ESP32<small>Controller</small></div>
+                  <div class="arch-link"><span class="arch-line" aria-hidden="true"></span><span>I2C, through a multiplexer</span></div>
+                  <div class="arch-node">Sensors<small>Distance, current, temperature and IMU</small></div>
+                </div>
+                <div class="arch-nodes">
+                  <div class="arch-node">NEMA 17 stepper motors<small>With drivers</small></div>
+                  <div class="arch-node">LoRa radio</div>
+                  <div class="arch-node">Battery pack</div>
+                </div>
+              </section>
+
+              <div class="arch-link"><span class="arch-line" aria-hidden="true"></span><span>UART</span></div>
+
+              <section class="arch-block" aria-label="Payload">
+                <h3>Payload</h3>
+                <div class="arch-node">ESP32-CAM<small>On an SG90 servo</small></div>
+              </section>
+            </div>
+          </figure>
+
+          <p>Commands are strings with fields separated by semicolons; for example, <code>MOV;LIN;F10</code> moves the rover forward one cell. Telemetry travels in a single line that carries the values of all the sensors and the state of the motors.</p>
+
+          <div class="table-wrap">
+            <table class="risk-table risk-table--text">
+              <caption>Main commands, from the interface to the LoRa message the rover receives.</caption>
+              <thead>
+                <tr><th scope="col">Group</th><th scope="col">Action</th><th scope="col">Interface command</th><th scope="col">LoRa message</th></tr>
+              </thead>
+              <tbody>
+                <tr><th scope="rowgroup" rowspan="4">Movement</th><td>Forward one cell</td><td><code>w</code></td><td><code>MOV;LIN;F10</code></td></tr>
+                <tr><td>Turn left 90°</td><td><code>a</code></td><td><code>MOV;ROT;L90</code></td></tr>
+                <tr><td>Backward one cell</td><td><code>s</code></td><td><code>MOV;LIN;B10</code></td></tr>
+                <tr><td>Turn right 90°</td><td><code>d</code></td><td><code>MOV;ROT;R90</code></td></tr>
+                <tr><th scope="rowgroup" rowspan="4">Sensors</th><td>Temperature</td><td><code>TM1</code> <code>TM2</code> <code>TALL</code></td><td><code>SEN;TEM;TM1</code> <code>SEN;TEM;TM2</code> <code>SEN;TEM;TALL</code></td></tr>
+                <tr><td>Distance: front, right, left, all</td><td><code>LSF</code> <code>LSR</code> <code>LSL</code> <code>LALL</code></td><td><code>SEN;LAS;LSF</code> <code>SEN;LAS;LSR</code> <code>SEN;LAS;LSL</code> <code>SEN;LAS;LALL</code></td></tr>
+                <tr><td>Current, voltage and power</td><td><code>INA_ALL</code> <code>INA_V</code> <code>INA_C</code> <code>INA_P</code></td><td><code>INA;ALL;VCP</code> <code>INA;IND;VOL</code> <code>INA;IND;CUR</code> <code>INA;IND;POW</code></td></tr>
+                <tr><td>Motor status</td><td><code>MOTOR_STATUS</code></td><td><code>MOT;STA;ON/OFF</code></td></tr>
+                <tr><th scope="rowgroup" rowspan="4">Camera</th><td>Photo without flash</td><td><code>CAPTURE</code></td><td><code>CAM;NFL;PAT</code></td></tr>
+                <tr><td>Photo with flash</td><td><code>CAPTURE_FLASH</code></td><td><code>CAM;WFL;PAT</code></td></tr>
+                <tr><td>Flash on or off</td><td><code>FLASH_TOGGLE</code></td><td><code>CAM;TOG;PAT</code></td></tr>
+                <tr><td>Servo: right, front, left</td><td><code>RIGHT</code> <code>FRONT</code> <code>LEFT</code></td><td><code>CAM;POS;DER</code> <code>CAM;POS;FRE</code> <code>CAM;POS;IZQ</code></td></tr>
+                <tr><th scope="row">Telemetry</th><td>All sensors in one line</td><td><code>AllSensors</code></td><td><code>ALL;ALL;ALL</code></td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <details class="more">
+            <summary>See the original architecture diagrams and protocol tables</summary>
+            <ul class="gallery gallery--natural">
+              <li>
+                <figure>
+                  <img src="../img/astro-nova/architecture-1.webp" width="1600" height="1006" loading="lazy" alt="Functional architecture of the whole system: perception, mapping, communication, imaging, mission, planning and movement blocks, linked by labeled flows, with the user instructions entering the mission block.">
+                  <figcaption>Functional architecture of the whole system. Labels are in Spanish.</figcaption>
+                </figure>
+              </li>
+              <li>
+                <figure>
+                  <img src="../img/astro-nova/architecture-2.webp" width="963" height="440" loading="lazy" alt="Work breakdown of the rover structure: the base for mobility and power with motors, wheels, battery compartment and rear switch opening, and the upper level for electronics and sensors with the PCB, camera servo, sensor mounts and cover.">
+                  <figcaption>Breakdown of the rover structure. Labels are in Spanish.</figcaption>
+                </figure>
+              </li>
+              <li>
+                <figure>
+                  <img src="../img/astro-nova/architecture-3.webp" width="510" height="511" loading="lazy" alt="Power architecture: the battery goes through a switch to the INA219 current sensor, then to a 5 V regulator that feeds the servo, the ESP32 and the camera, and directly to the motor drivers and motors.">
+                  <figcaption>Power architecture. Labels are in Spanish.</figcaption>
+                </figure>
+              </li>
+              <li>
+                <figure>
+                  <img src="../img/astro-nova/architecture-4.webp" width="1337" height="472" loading="lazy" alt="Communication architecture: the interface talks to the base station, which manages commands and handles outgoing and incoming communication, and the mobile station, which receives commands, processes and decides, and drives actuators and sensors.">
+                  <figcaption>Communication architecture. Labels are in Spanish.</figcaption>
+                </figure>
+              </li>
+              <li>
+                <figure>
+                  <img src="../img/astro-nova/protocol-table-1.webp" width="1065" height="935" loading="lazy" alt="Protocol table: fields and data quantities for sensor requests, and the acknowledgment messages for connection, motors and servo.">
+                  <figcaption>Protocol table, part 1. Labels are in Spanish.</figcaption>
+                </figure>
+              </li>
+              <li>
+                <figure>
+                  <img src="../img/astro-nova/protocol-table-2.webp" width="1080" height="975" loading="lazy" alt="Protocol table: each command group, with its fields and the action it triggers, for movement, sensors, current sensor, telemetry and camera.">
+                  <figcaption>Protocol table, part 2. Labels are in Spanish.</figcaption>
+                </figure>
+              </li>
+            </ul>
+          </details>
+        </section>
+
+        <section class="block" aria-labelledby="decisions-heading">
+          <h2 id="decisions-heading">Key design decisions</h2>
+          <div class="table-wrap">
+            <table class="risk-table risk-table--rating">
+              <caption>The main choices and the reason behind each one.</caption>
+              <thead>
+                <tr><th scope="col">Decision</th><th scope="col">Why</th></tr>
+              </thead>
+              <tbody>
+                <tr><th scope="row">Two-level modular chassis</th><td>Keeps the motors and batteries low in the base and the electronics on top, for a stable chassis that is easy to assemble and maintain.</td></tr>
+                <tr><th scope="row">PLA structure, TPU tires and a caster wheel</th><td>PLA for the printed structure, TPU for traction, and a metal caster as a third support point for smooth, stable motion.</td></tr>
+                <tr><th scope="row">Removable front cover</th><td>Quick access to the batteries for replacement and inspection.</td></tr>
+                <tr><th scope="row">Stepper motors with microstepping</th><td>Moves counted in steps are precise and repeatable, so the rover can advance exactly one grid cell or turn exactly 90°; microstepping reduces positioning error.</td></tr>
+                <tr><th scope="row">A* route planning on a grid</th><td>Finds short routes without exploring every option and behaves predictably, which suits a rover that moves in ordered, discrete steps.</td></tr>
+                <tr><th scope="row">A* planning on the ground segment</th><td>The map, the destination and the virtual obstacles live in the ground control interface, the logic was first built and tested on a computer, and the operator can watch the route and change the destination or obstacles during the mission. As in many planetary rover drives, the route is planned on the ground and executed by the rover.</td></tr>
+                <tr><th scope="row">A* tested in Processing first</th><td>The navigation logic could be debugged without depending on the rover being available.</td></tr>
+                <tr><th scope="row">LoRa radio link</th><td>Long range and low power for commands, telemetry and images.</td></tr>
+                <tr><th scope="row">Separate camera board (ESP32-CAM)</th><td>The camera board only takes and sends photos, while the rover's controller handles everything else.</td></tr>
+                <tr><th scope="row">Photos sent in fragments with retries</th><td>The ground station requests each fragment and asks again if one is lost, so a dropped packet doesn't ruin the photo.</td></tr>
+                <tr><th scope="row">I2C multiplexer for the distance sensors</th><td>The three sensors share the same address, and changing it caused conflicts on the bus.</td></tr>
+                <tr><th scope="row">Custom PCBs</th><td>Ordered, reliable connections; the team credits the PCBs with reducing errors.</td></tr>
+                <tr><th scope="row">Non-blocking motor control, a watchdog and four threads in the interface</th><td>The motors move without freezing the rover's program, the watchdog prevents lockups, and the interface stays responsive while the camera, keyboard and buttons run in parallel.</td></tr>
+                <tr><th scope="row">MPU6050 not used to correct orientation</th><td>It lost precision in slow turns, and the rover doesn't turn fast enough to benefit from it.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="block" aria-labelledby="mech-heading">
+          <h2 id="mech-heading">Mechanical design</h2>
+          <p>The chassis has two levels. The base holds the 4 × 18650 batteries, the NEMA 17 motors, the caster wheel, the switch and a removable front cover. The control level holds the PCB, a 2.5 cm wall for the distance sensors and the mount for the servo and the camera. The rover is 13 cm tall, or 17.5 cm with the camera, with hexagonal openings in the cover. It is printed in PLA, with TPU on the tires and M3 screws.</p>
+
+          <figure class="plate plate--narrow">
+            <img src="../img/astro-nova/exploded-view.webp" width="676" height="460" loading="lazy" alt="Exploded CAD view of the rover: the battery tray, the base with motor bays, the upper deck, the faceted cover with the camera mount, and the two motors with their wheels, separated along their assembly axes.">
+            <figcaption>Exploded view of the rover's two-level chassis.</figcaption>
+          </figure>
+
+          <figure class="video video--vertical">
+            <div class="video-frame">
+              <iframe src="https://www.youtube-nocookie.com/embed/D-LSMU0xu7s" title="Exploded view of the CAD assembly" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <figcaption>Exploded view of the CAD assembly.</figcaption>
+          </figure>
+
+          <ul class="gallery gallery--natural gallery--3">
+            <li>
+              <figure>
+                <img src="../img/astro-nova/cad-base.webp" width="676" height="463" loading="lazy" alt="CAD of the base level: a battery bay holding four cells, the motor mounts with wheels and the internal walls.">
+                <figcaption>Base level: batteries and motors.</figcaption>
+              </figure>
+            </li>
+            <li>
+              <figure>
+                <img src="../img/astro-nova/cad-control-level.webp" width="646" height="496" loading="lazy" alt="CAD of the control level: a flat deck inside a slotted wall, with the camera servo mount at the front.">
+                <figcaption>Control level.</figcaption>
+              </figure>
+            </li>
+            <li>
+              <figure>
+                <img src="../img/astro-nova/cad-assembly.webp" width="917" height="703" loading="lazy" alt="CAD of the final assembly: the faceted cover with hexagonal openings, the camera mount at the front and one wheel visible.">
+                <figcaption>Final assembly.</figcaption>
+              </figure>
+            </li>
+          </ul>
+
+          <figure class="plate">
+            <img src="../img/astro-nova/drawing-dimensions.webp" width="1197" height="844" loading="lazy" alt="General drawing of the chassis outline with its main dimensions, in millimeters, and its screw holes.">
+            <figcaption>General drawing with main dimensions, in mm.</figcaption>
+          </figure>
+        </section>
+
+        <section class="block" aria-labelledby="elec-heading">
+          <h2 id="elec-heading">Electronics and power</h2>
+          <p>The team designed three custom PCBs: one for the rover, one for the camera and one for the ground station. The battery feeds the motor drivers directly and, through a 5 V regulator, the ESP32, the camera and the servo. An INA219 monitors current, voltage and power.</p>
+
+          <ul class="gallery gallery--natural">
+            <li>
+              <figure>
+                <img src="../img/astro-nova/rover-side.webp" width="703" height="628" loading="lazy" alt="Side view of the real rover without its cover: the electronics on the upper deck, the camera on its servo, a blue wheel and the caster.">
+                <figcaption>The rover without its cover, side view.</figcaption>
+              </figure>
+            </li>
+            <li>
+              <figure>
+                <img src="../img/astro-nova/rover-top.webp" width="680" height="883" loading="lazy" alt="Top view of the inside of the rover: the green custom PCB with the ESP32, motor drivers, sensors and LoRa module, the voltage regulator, the camera servo and the wiring.">
+                <figcaption>Top view of the inside, with the custom PCB.</figcaption>
+              </figure>
+            </li>
+          </ul>
+
+          <figure class="plate plate--narrow">
+            <img src="../img/astro-nova/pcb-rover.webp" width="703" height="660" loading="lazy" alt="Layout of the rover PCB with the footprints for the ESP32, LoRa module, INA219, motor drivers, AHT10, MPU6050, multiplexer and connectors.">
+            <figcaption>The rover PCB.</figcaption>
+          </figure>
+
+          <figure class="plate">
+            <img src="../img/astro-nova/components-diagram.webp" width="1053" height="603" loading="lazy" alt="Two photos of the real rover, from above and from the side, with twelve numbered components keyed to a table: ESP32, NEMA 17 motors, DRV8825 drivers, VL53L0X, MPU6050, AHT10, LoRa, ESP32-CAM, INA219, SG90 servo, multiplexer and voltage regulator.">
+            <figcaption>Numbered diagram of the components on the real rover. Labels are in Spanish.</figcaption>
+          </figure>
+
+          <details class="more">
+            <summary>See the schematics and the other PCBs</summary>
+            <img src="../img/astro-nova/schematic-rover.webp" width="1103" height="721" loading="lazy" alt="Electrical schematic of the rover: ESP32, LoRa module, two DRV8825 drivers with their NEMA connectors, INA219, AHT10, MPU6050, I2C multiplexer with three distance sensors and the servo.">
+            <ul class="gallery gallery--natural">
+              <li>
+                <figure>
+                  <img src="../img/astro-nova/schematic-camera.webp" width="938" height="693" loading="lazy" alt="Electrical schematic of the camera board: the ESP32-CAM with a 5 V supply and the transmit and receive lines on a header.">
+                  <figcaption>Camera schematic.</figcaption>
+                </figure>
+              </li>
+              <li>
+                <figure>
+                  <img src="../img/astro-nova/pcb-camera.webp" width="536" height="664" loading="lazy" alt="Layout of the camera PCB with the ESP32-CAM footprint and a four-pin header.">
+                  <figcaption>Camera PCB.</figcaption>
+                </figure>
+              </li>
+              <li>
+                <figure>
+                  <img src="../img/astro-nova/schematic-gs.webp" width="873" height="469" loading="lazy" alt="Electrical schematic of the ground station: an ESP32 wired to a LoRa module.">
+                  <figcaption>Ground station schematic.</figcaption>
+                </figure>
+              </li>
+              <li>
+                <figure>
+                  <img src="../img/astro-nova/pcb-gs.webp" width="827" height="348" loading="lazy" alt="Layout of the ground station PCB with the ESP32 and LoRa module footprints.">
+                  <figcaption>Ground station PCB.</figcaption>
+                </figure>
+              </li>
+            </ul>
+          </details>
+        </section>
+
+        <section class="block" aria-labelledby="nav-heading">
+          <h2 id="nav-heading">Navigation</h2>
+          <p>The rover moves by counting steps of its stepper motors, at 6,400 steps per turn: one 33.7 cm cell takes 10,644 steps and a 90° turn takes 4,912 steps per motor. The values come from the calculation below and were then adjusted by testing on the real floor.</p>
+
+          <div class="table-wrap">
+            <table class="risk-table risk-table--text">
+              <caption>Step calculation for one cell and for a 90° turn, with 6,400 steps per wheel turn.</caption>
+              <thead>
+                <tr><th scope="col">Calculation</th><th scope="col">Linear advance (one cell)</th><th scope="col">Turn of 90°</th></tr>
+              </thead>
+              <tbody>
+                <tr><th scope="row">Wheel circumference, π × 6.45 cm</th><td>20.26 cm</td><td>20.26 cm</td></tr>
+                <tr><th scope="row">Distance the wheel must travel</th><td>33.7 cm</td><td>15.55 cm, a quarter of the turning circle (π × 19.8 cm = 62.203 cm)</td></tr>
+                <tr><th scope="row">Wheel turns needed</th><td>33.7 / 20.26 = 1.6631</td><td>15.55 / 20.26 = 0.7675</td></tr>
+                <tr class="total"><th scope="row">Steps, turns × 6,400</th><td>10,644</td><td>4,912 per motor</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p>The team used A*, with f(n) = g(n) + h(n), calculated in the ground control interface and first tested in a Processing simulation on a 20 × 20 grid with virtual sensors.</p>
+          <figure class="plate plate--narrow">
+            <img src="../img/astro-nova/astar-simulation.webp" width="796" height="828" loading="lazy" alt="Processing simulation window: a grid with red obstacles, the rover as a blue square, the destination as a green square and a list of the detected obstacle coordinates on the left.">
+            <figcaption>The A* simulation in Processing. Labels are in Spanish.</figcaption>
+          </figure>
+
+          <p>In autonomous mode, the rover follows the route cell by cell. If it detects an obstacle, the route is recalculated, and if it ends up surrounded, it backs up. A FIFO list of commands lets the system revert the last move after a communication error.</p>
+          <figure class="plate">
+            <img src="../img/astro-nova/autonomous-mode.webp" width="1468" height="1815" loading="lazy" alt="Flowchart of the autonomous movement: the user turns on Auto and picks a destination, the path is computed with A* and shown on the map, then each step takes the next node, adjusts orientation, checks the sensors and either advances, marks an obstacle and recalculates, or backs up, until the destination is reached or Auto is turned off.">
+            <figcaption>Autonomous mode flowchart. Labels are in Spanish.</figcaption>
+          </figure>
+
+          <p>Manual mode respects the map limits and the obstacles.</p>
+
+          <details class="more">
+            <summary>See the A* flowchart</summary>
+            <img src="../img/astro-nova/astar-flowchart.webp" width="1480" height="1667" loading="lazy" alt="Flowchart of the A* algorithm: initialization, selection of the current node, goal check, generation and validation of moves, evaluation of each valid move, repetition, path reconstruction and output.">
+            <p class="note">Labels are in Spanish.</p>
+          </details>
+        </section>
+
+        <section class="block" aria-labelledby="camera-heading">
+          <h2 id="camera-heading">Camera payload</h2>
+          <p>The payload is an ESP32-CAM on a servo that points it left, front or right. On command, it takes a photo with or without flash at about 320 × 240 and passes it to the rover over UART. The rover sends it to the ground station in fragments over LoRa; the ground station requests each fragment and retries up to 10 times, every 2 seconds, until it arrives. The interface shows the progress, displays the photo and saves it for later analysis.</p>
+          <ul class="gallery gallery--natural gallery--dark">
+            <li>
+              <figure>
+                <img src="../img/astro-nova/camera-before.webp" width="566" height="372" loading="lazy" alt="Camera section of the interface before a photo: an empty preview, a progress bar at 0%, the capture, flash, LED and stop buttons and the servo left, front and right buttons.">
+                <figcaption>Camera section before a photo.</figcaption>
+              </figure>
+            </li>
+            <li>
+              <figure>
+                <img src="../img/astro-nova/camera-after.webp" width="579" height="366" loading="lazy" alt="The same camera section after a photo: the picture received from the rover shows a blue box on a laboratory floor, with the progress bar at 100%.">
+                <figcaption>The same section after the photo arrives.</figcaption>
+              </figure>
+            </li>
+          </ul>
+        </section>
+
+        <section class="block" aria-labelledby="interface-heading">
+          <h2 id="interface-heading">Ground control interface</h2>
+          <figure class="plate">
+            <img src="../img/astro-nova/interface.webp" width="1600" height="850" loading="lazy" alt="The full ground control interface, titled Rover Dashboard: the grid map on the left, the camera view and capture buttons below it, a current plot and a signal strength plot in the middle, and the sensor readings, message log, export buttons and manual and autonomous controls on the right.">
+            <figcaption>The complete interface: map, camera, live plots, telemetry and controls.</figcaption>
+          </figure>
+          <ul class="gallery gallery--natural gallery--dark">
+            <li>
+              <figure>
+                <img src="../img/astro-nova/map-empty.webp" width="552" height="546" loading="lazy" alt="The interface map with no obstacles: the rover at the bottom-left corner and the destination as a green cell.">
+                <figcaption>Map without obstacles.</figcaption>
+              </figure>
+            </li>
+            <li>
+              <figure>
+                <img src="../img/astro-nova/map-obstacles.webp" width="552" height="550" loading="lazy" alt="The interface map with obstacles marked on many cells, the rover at the bottom-left corner and the destination as a green cell.">
+                <figcaption>Map with obstacles.</figcaption>
+              </figure>
+            </li>
+          </ul>
+          <ul class="work">
+            <li>A map with physical and virtual obstacles.</li>
+            <li>Manual and autonomous modes.</li>
+            <li>Camera control.</li>
+            <li>Current and RSSI plots.</li>
+            <li>Telemetry every second.</li>
+            <li>CSV export and import.</li>
+            <li>Four threads, so the interface doesn't block.</li>
+          </ul>
+        </section>
+
+        <section class="block" aria-labelledby="results-heading">
+          <h2 id="results-heading">Results</h2>
+
+          <figure class="timing">
+            <p class="timing-sub">Battery life at maximum load, from the estimated and the measured maximum current.</p>
+            <div class="timing-grid">
+              <div class="scale" aria-hidden="true"><span>0</span><span>1.5</span><span>3</span><span>4.5</span><span>6 h</span></div>
+
+              <div class="row-label">Estimated</div>
+              <div class="track"><span class="bar sim" style="--v:0.4417"></span></div>
+              <div class="row-value"><strong>2 h 39 min</strong> <span>estimate</span></div>
+
+              <div class="row-label">Measured</div>
+              <div class="track"><span class="bar real" style="--v:0.7444"></span></div>
+              <div class="row-value"><strong>4 h 28 min</strong> <span>measured</span></div>
+            </div>
+            <ul class="legend">
+              <li><span class="swatch sim"></span>Hatched: estimate</li>
+              <li><span class="swatch real"></span>Solid: measured on the built rover</li>
+            </ul>
+          </figure>
+
+          <div class="table-wrap">
+            <table class="risk-table risk-table--rating">
+              <caption>Measured current by subsystem.</caption>
+              <thead>
+                <tr><th scope="col">Subsystem</th><th scope="col">Current</th></tr>
+              </thead>
+              <tbody>
+                <tr><th scope="row">Electronics at rest</th><td>132.36 mA</td></tr>
+                <tr><th scope="row">Motors</th><td>332.20 mA</td></tr>
+                <tr><th scope="row">Camera servo</th><td>10.74 mA</td></tr>
+                <tr><th scope="row">Photo with flash</th><td>193.91 mA</td></tr>
+                <tr class="total"><th scope="row">Maximum total</th><td>669 mA (0.67 A) vs. 1.14 A estimated</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p>The real draw was lower than estimated because the heaviest loads, the motors and the camera flash, only run at specific moments.</p>
+
+          <ul class="gallery gallery--natural">
+            <li>
+              <figure>
+                <img src="../img/astro-nova/current-motors.webp" width="1280" height="630" loading="lazy" alt="Plot of current in milliamps against time in seconds: a base level of about 130 mA with repeated spikes to about 460 mA while the motors run.">
+                <figcaption>Motors, servo and overall draw.</figcaption>
+              </figure>
+            </li>
+            <li>
+              <figure>
+                <img src="../img/astro-nova/current-camera.webp" width="1280" height="630" loading="lazy" alt="Plot of current in milliamps against time in seconds during three photos with flash: a base level of about 130 mA with three peaks above 300 mA.">
+                <figcaption>Camera with flash.</figcaption>
+              </figure>
+            </li>
+          </ul>
+          <p class="note">Current over time, analyzed in MATLAB from data logged through the interface. Labels are in Spanish.</p>
+
+          <div class="table-wrap">
+            <table class="risk-table risk-table--rating">
+              <caption>Mission outcome.</caption>
+              <thead>
+                <tr><th scope="col">Requirement</th><th scope="col">Result</th></tr>
+              </thead>
+              <tbody>
+                <tr><th scope="row">Fit the rover within 20 × 20 cm</th><td>Built on a 20 × 20 cm base, 13 cm tall (17.5 cm with the camera mount)</td></tr>
+                <tr><th scope="row">Reach a target autonomously with A*</th><td>Route planned and followed on the test floor, recalculated whenever an obstacle appeared</td></tr>
+                <tr><th scope="row">Avoid physical and virtual obstacles</th><td>Sensor-detected and software-defined obstacles handled on the same map</td></tr>
+                <tr><th scope="row">Take inspection photos on demand</th><td>Camera on a servo (left, front, right), with or without flash, sent to the ground station in fragments over LoRa</td></tr>
+                <tr><th scope="row">Send telemetry in real time</th><td>All sensor data sent over LoRa and updated every second in the interface</td></tr>
+                <tr><th scope="row">Test the full system</th><td>Navigation, sensors, LoRa link and camera tested; final demonstration recorded</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>The final system met the requirements set for the mission.</p>
+
+          <figure class="video">
+            <div class="video-frame">
+              <iframe src="https://drive.google.com/file/d/1ql8Ryy__EVdWZk1ehgvSwcI11S5aaTV6/preview" title="Final demonstration of the ASTRØ-NØVA rover" loading="lazy" allow="autoplay; fullscreen" allowfullscreen></iframe>
+            </div>
+            <figcaption>Final demonstration: autonomous route, obstacle response, remote commands and photo transmission.</figcaption>
+          </figure>
+
+          <p class="note">Figures, tables and results come from the team's final report for the course, dated December 6, 2025. Screenshots and diagrams keep their original Spanish labels.</p>
+        </section>
+
+        <section class="block" aria-labelledby="limits-heading">
+          <h2 id="limits-heading">Limitations and next steps</h2>
+          <h3>Limitations</h3>
+          <ul class="work">
+            <li>Position comes only from counting motor steps, with no encoder feedback.</li>
+            <li>The MPU6050 lost precision in slow turns, so it was not used to correct orientation.</li>
+            <li>The distance sensors struggled with very dark black surfaces.</li>
+            <li>The rover discovers obstacles only one cell ahead.</li>
+            <li>Autonomous navigation depends on the LoRa link: each move is sent from the ground, so if the link drops, the rover stops and waits.</li>
+          </ul>
+          <h3>Next steps</h3>
+          <ul class="work">
+            <li>Add wheel encoders and an orientation controller with the MPU6050.</li>
+            <li>Use triangulation to locate the rover.</li>
+            <li>Detect obstacles more than one cell ahead.</li>
+            <li>Use the camera to identify the type of obstacle.</li>
+            <li>Add a mechanism to collect samples.</li>
+            <li>Move route planning on board, so the rover can keep navigating if the link drops.</li>
+          </ul>
+        </section>
+
+        <section class="block" aria-labelledby="learned-heading">
+          <h2 id="learned-heading">What I learned</h2>
+          <p><strong>Mechanical design is integration design.</strong> Drawing the chassis meant fitting four batteries, two motors, three distance sensors, a camera on a servo and the PCB into 20 × 20 cm, while leaving room for wiring, screws and quick battery access. Every part I added in CAD had to work for the electronics and for whoever had to assemble and fix it.</p>
+          <p><strong>Testing is where the system really comes together.</strong> The step counts calculated on paper had to be adjusted through testing on the real floor, because without encoders the rover only knows where it is by counting steps. Running moves, turns and error cases again and again is what made the navigation repeatable.</p>
+          <p><strong>Measure before you conclude.</strong> The estimate said the battery would last 2 h 39 min. Logging the real current through the interface and analyzing it in MATLAB showed 4 h 28 min, because the heaviest loads only run at specific moments.</p>
+        </section>
+
+      </div>
+
+      <aside class="sidebar" aria-label="Project details">
+        <div class="sidebar-box">
+          <dl>
+            <div><dt>Context</dt><dd>Space Technologies, Tecnológico de Monterrey</dd></div>
+            <div><dt>My role</dt><dd>Mechanical design, ground control interface, testing and power analysis</dd></div>
+            <div><dt>Dates</dt><dd>Aug – Dec 2025</dd></div>
+            <div><dt>Type</dt><dd>Team project, three students</dd></div>
+            <div><dt>Status</dt><dd>Built and tested</dd></div>
+          </dl>
+          <div class="tools-wrap">
+            <h3>Equipment and tools</h3>
+            <ul class="tools">
+              <li>ESP32</li>
+              <li>ESP32-CAM</li>
+              <li>LoRa (433 MHz)</li>
+              <li>NEMA 17 stepper motors</li>
+              <li>DRV8825 drivers</li>
+              <li>VL53L0X distance sensors</li>
+              <li>INA219</li>
+              <li>MPU6050</li>
+              <li>AHT10</li>
+              <li>SG90 servo</li>
+              <li>3D printing (PLA, TPU)</li>
+              <li>Python</li>
+              <li>Processing</li>
+              <li>MATLAB</li>
+            </ul>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <nav class="pager" aria-label="More projects">
+      <a href="reto-abb.html"><small>Previous project</small>Robotic bottle packaging cell</a>
+      <a class="next" href="vitro.html"><small>Next project</small>Automated robotic insert loading cell</a>
+    </nav>
+
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <p>© 2026 Brandon Iván Lagunas Gaytán. <a href="mailto:blagunasg.a@gmail.com">blagunasg.a@gmail.com</a></p>
+    </div>
+  </footer>
+
+</body>
+</html>
