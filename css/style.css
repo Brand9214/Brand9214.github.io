@@ -510,6 +510,14 @@ p { margin: 0 0 1em; max-width: var(--measure); }
 
 .block .gallery { margin-top: 24px; }
 .gallery img { height: auto; }
+.gallery--natural { align-items: start; }
+.gallery--natural img { aspect-ratio: auto; object-fit: contain; background: #fff; }
+
+.gallery + .note { margin-top: 24px; }
+
+.plate { margin: 24px 0; }
+.plate img { width: 100%; height: auto; border: 1px solid var(--rule); border-radius: 4px; background: #fff; }
+.plate figcaption { font-size: 0.875rem; color: var(--steel); margin-top: 6px; }
 .timing + .timing { margin-top: 40px; }
 .timing + p { margin-top: 28px; }
 @media (min-width: 800px) { .stats--3 { grid-template-columns: repeat(3, 1fr); } }
