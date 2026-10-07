@@ -537,6 +537,11 @@ p { margin: 0 0 1em; max-width: var(--measure); }
 .risk-table tbody tr:last-child th,
 .risk-table tbody tr:last-child td { border-bottom: 0; }
 .risk-table td strong { color: var(--ink); }
+.risk-table--rating { min-width: 0; }
+.risk-table--rating thead th:nth-child(2),
+.risk-table--rating tbody td:nth-child(2) { text-align: left; }
+.risk-table .total th,
+.risk-table .total td { background: var(--surface); font-weight: 600; }
 
 .more { margin-top: 8px; }
 .more summary { cursor: pointer; font-weight: 600; color: var(--link); padding: 6px 0; }

@@ -35,18 +35,17 @@
     <header class="project-head">
       <div class="card-meta"><span class="partner">Carrier</span><span>Feb – Jun 2025</span><span>Team of 4</span></div>
       <h1 class="project-title">Automated robotic box folding cell</h1>
-      <p class="lede">A robotic cell that folds carton boxes in four sizes, replacing a manual task that scored 6 on the RULA ergonomic scale. It was designed with Carrier and sized with a digital twin. Every result on this page is a projection from the simulation model.</p>
+      <p class="lede">A robotic cell that folds flat carton blanks into boxes in four sizes, replacing a manual task that scored 6 on the RULA ergonomic scale. It was designed with Carrier and sized with a digital twin. Every result for the cell is a projection from the simulation model. The cell was not built.</p>
     </header>
 
     <figure class="cover">
       <img src="../img/carrier/cell-isometric.png" width="1031" height="667" alt="Isometric CAD view of the folding cell: two UR10 robots on linear rails around a central fixture, with input and output conveyors inside perimeter fencing.">
     </figure>
 
-    <dl class="stats">
+    <dl class="stats stats--3">
       <div><dt>Boxes per day, from 1,309</dt><dd>1,440</dd><span class="tag"><span class="swatch sim"></span>Projected</span></div>
-      <div><dt>Operator required, from 4</dt><dd>1</dd><span class="tag"><span class="swatch sim"></span>Projected</span></div>
-      <div><dt>Payback period</dt><dd>1.8 yr</dd><span class="tag"><span class="swatch sim"></span>Projected</span></div>
-      <div><dt>Box sizes handled</dt><dd>4</dd></div>
+      <div><dt>Operators required, from 4</dt><dd>1</dd><span class="tag"><span class="swatch sim"></span>Projected</span></div>
+      <div><dt>Box sizes handled</dt><dd>4</dd><span class="tag"><span class="swatch sim"></span>Design</span></div>
     </dl>
 
     <div class="project-body">
@@ -54,15 +53,14 @@
 
         <section class="block" aria-labelledby="challenge-heading">
           <h2 id="challenge-heading">The challenge</h2>
-          <p>Four operators, two per shift on two shifts, folded carton boxes by hand at 11 seconds per box, for 1,309 boxes a day across four box sizes. The task is repetitive, forces awkward postures and takes physical effort. The project was to design a robotic cell that handles all four sizes and meets the ANSI/RIA R15.06-1999 safety standard, and to check in simulation what it would deliver.</p>
+          <p>Four operators, two per shift on two shifts, folded carton boxes by hand at 11 seconds per box, for 1,309 boxes a day across four box sizes. Each box arrived as a flat, cross-shaped carton blank, and the operators folded its flaps by hand until it took shape. The task is repetitive, forces awkward postures and takes physical effort. The project was to design a robotic cell that handles all four sizes and meets the ANSI/RIA R15.06-1999 safety standard, and to check in simulation what it would deliver.</p>
         </section>
 
         <section class="block" aria-labelledby="work-heading">
           <h2 id="work-heading">What I did</h2>
           <ul class="work">
-            <li>Designed the cell layout integrating two UR10 collaborative robots, vacuum grippers, linear rails, conveyors and PLC-based control, with a Cognex vision system that detects lid size and automatically adjusts the fixture across four box formats.</li>
-            <li>Modeled material flow, cycle times, bottlenecks and work in process in Siemens Tecnomatix Plant Simulation, and validated robot trajectories in Process Simulate to size cell capacity.</li>
-            <li>Projected an increase in daily output from 1,309 to 1,440 boxes and a 75% reduction in required headcount, from 4 operators to 1, with a payback period of 1.8 years.</li>
+            <li>Designed the cell layout integrating two UR10 collaborative robots, vacuum grippers, linear rails, conveyors and PLC-based control, with a Cognex vision system that detects blank size and automatically adjusts the fixture across four box formats.</li>
+            <li>Modeled the material flow of the manual process and the robotic cell in Siemens Tecnomatix Plant Simulation to compare daily output, cycle time and headcount, and validated the full robot sequence in Process Simulate.</li>
             <li>Worked in a team of four that also covered the ergonomic analysis, safety design, budget and financial analysis.</li>
           </ul>
         </section>
@@ -71,23 +69,59 @@
           <h2 id="ergonomics-heading">Ergonomic analysis</h2>
           <p>The case for automating started with the people doing the job. The team scored the manual task with RULA, which rates the posture of the neck, trunk and upper limbs. The result was 6 out of 7, action level 3: changes needed soon, through redesign, task rotation or automation.</p>
           <p>The Job Strain Index (JSI) multiplies six factors: intensity of exertion, duration of exertion, efforts per minute, hand and wrist posture, speed of work and hours per day. For the manual process it came out at 108.</p>
-          <figure class="plate">
-            <img src="../img/carrier/rula.png" width="2006" height="621" loading="lazy" alt="RULA worksheet for the manual folding task: scores for arm, forearm, wrist, neck, trunk and legs, with a final RULA score of 6.">
-            <figcaption>RULA worksheet for the manual folding task. Final score: 6.</figcaption>
-          </figure>
-          <figure class="plate">
-            <img src="../img/carrier/jsi.png" width="1077" height="707" loading="lazy" alt="Job Strain Index rating table with the selected values underlined for each of the six factors.">
-            <figcaption>Job Strain Index factors for the manual task: 6 × 1.5 × 2 × 2 × 2 × 1.5 = 108.</figcaption>
-          </figure>
+          <div class="table-wrap">
+            <table class="risk-table risk-table--rating">
+              <caption>RULA scores for the manual folding task. Final score: 6.</caption>
+              <thead>
+                <tr><th scope="col">Body part</th><th scope="col">Position</th><th scope="col">Score</th></tr>
+              </thead>
+              <tbody>
+                <tr><th scope="row">Upper arm</th><td>Flexion 45°–90°</td><td>3</td></tr>
+                <tr><th scope="row">Upper arm</th><td>Arm abducted</td><td>1</td></tr>
+                <tr><th scope="row">Lower arm</th><td>Flexion &lt; 60° or &gt; 100°</td><td>2</td></tr>
+                <tr><th scope="row">Wrist</th><td>Flexion or extension &gt; 15°</td><td>3</td></tr>
+                <tr><th scope="row">Wrist</th><td>Radial or ulnar deviation</td><td>2</td></tr>
+                <tr><th scope="row">Wrist</th><td>Extreme pronation or supination</td><td>2</td></tr>
+                <tr class="total"><th scope="row">Group A score</th><td></td><td>6</td></tr>
+                <tr><th scope="row">Neck</th><td>Flexion &gt; 20°</td><td>3</td></tr>
+                <tr><th scope="row">Trunk</th><td>Flexion between −20° and 20°</td><td>2</td></tr>
+                <tr><th scope="row">Legs</th><td>Standing, weight evenly distributed, room to change position</td><td>1</td></tr>
+                <tr class="total"><th scope="row">Group B score</th><td></td><td>6</td></tr>
+                <tr class="total"><th scope="row">Final RULA score</th><td></td><td>6</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="table-wrap">
+            <table class="risk-table risk-table--rating">
+              <caption>Job Strain Index factors for the manual task: 6 × 1.5 × 2 × 2 × 2 × 1.5 = 108.</caption>
+              <thead>
+                <tr><th scope="col">Factor</th><th scope="col">Level observed</th><th scope="col">Multiplier</th></tr>
+              </thead>
+              <tbody>
+                <tr><th scope="row">Intensity of exertion</th><td>Hard</td><td>6</td></tr>
+                <tr><th scope="row">Duration of exertion</th><td>30–49%</td><td>1.5</td></tr>
+                <tr><th scope="row">Efforts per minute</th><td>15–19</td><td>2</td></tr>
+                <tr><th scope="row">Hand/wrist posture</th><td>Bad</td><td>2</td></tr>
+                <tr><th scope="row">Speed of work</th><td>Very fast</td><td>2</td></tr>
+                <tr><th scope="row">Duration per day</th><td>≥ 8 h</td><td>1.5</td></tr>
+                <tr class="total"><th scope="row">Job Strain Index</th><td></td><td>108</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <details class="more">
+            <summary>See the original RULA and JSI worksheets from the report</summary>
+            <img src="../img/carrier/rula.png" width="2006" height="621" loading="lazy" alt="Original RULA worksheet from the report: scores for arm, forearm, wrist, neck, trunk and legs, with a final RULA score of 6.">
+            <img src="../img/carrier/jsi.png" width="1077" height="707" loading="lazy" alt="Original Job Strain Index rating table from the report, with the selected values underlined for each of the six factors.">
+          </details>
         </section>
 
         <section class="block" aria-labelledby="design-heading">
           <h2 id="design-heading">Cell design</h2>
-          <p>Two UR10 robots, each rated for 10 kg with a 1,300 mm reach and ±0.1 mm repeatability, ride on linear rails around a central folding fixture, so both can work on the same box in parallel. A Cognex camera reads each lid's size and checks it for defects, and a PLC coordinates the robots, grippers, sensors and conveyors.</p>
+          <p>Two UR10 robots, each rated for 10 kg with a 1,300 mm reach and ±0.1 mm repeatability, ride on linear rails around a central folding fixture, so both can work on the same box in parallel. A Cognex camera reads each blank's size and checks it for defects, and a PLC coordinates the robots, grippers, sensors and conveyors.</p>
           <ul class="work">
-            <li>Custom vacuum grippers with 16 TXN-38 suction cups across two grippers, holding with 288 N each.</li>
-            <li>An adjustable fixture with 13 vertical plates that guide and hold the lid and four raised plates that fold the inner flaps. It resizes itself on its own linear rail.</li>
-            <li>Modular conveyors that carry the lids between inspection, folding and output.</li>
+            <li>Two custom vacuum grippers, each with a 4 × 4 array of TXN-38 suction cups and 288 N of total holding force.</li>
+            <li>An adjustable fixture with 13 vertical plates that guide and hold the blank and four raised plates that fold the inner flaps. It resizes itself on its own linear rail.</li>
+            <li>Modular conveyors that carry the blanks between inspection, folding and output.</li>
           </ul>
           <ul class="gallery gallery--natural">
             <li>
@@ -120,11 +154,11 @@
         <section class="block" aria-labelledby="sequence-heading">
           <h2 id="sequence-heading">How the cell works</h2>
           <ol class="work">
-            <li><strong>Load and inspect.</strong> The carton lid goes on the input conveyor. A Cognex camera detects its size and checks it for defects such as stains or deformation.</li>
+            <li><strong>Load and inspect.</strong> The flat carton blank goes on the input conveyor. A Cognex camera detects its size and checks it for defects such as stains or deformation.</li>
             <li><strong>Adjust the fixture.</strong> A presence sensor stops the conveyor and tells the PLC. The fixture moves on its own rail to the detected size.</li>
-            <li><strong>Pick.</strong> A UR10 on its linear rail moves to the box and picks it with the suction gripper.</li>
-            <li><strong>Place.</strong> The rail moves the robot in front of the fixture, and the robot places the box on it.</li>
-            <li><strong>Fold.</strong> Both robots push the box down to trigger the fixture, which folds the main flaps to 90°. Then one robot holds a side flap while the other folds the adjacent one, and finally each robot folds one of the last two flaps at the same time.</li>
+            <li><strong>Pick.</strong> A UR10 on its linear rail moves to the blank and picks it with the suction gripper.</li>
+            <li><strong>Place.</strong> The rail moves the robot in front of the fixture, and the robot places the blank on it.</li>
+            <li><strong>Fold.</strong> Both robots push the blank down to trigger the fixture, which folds the main flaps to 90°. Then one robot holds a side flap while the other folds the adjacent one, and finally each robot folds one of the last two flaps at the same time.</li>
             <li><strong>Hand off.</strong> The second robot picks up the folded box and places it on the output conveyor.</li>
           </ol>
         </section>
@@ -140,7 +174,7 @@
 
         <section class="block" aria-labelledby="results-heading">
           <h2 id="results-heading">Results</h2>
-          <p>The team built a digital twin in two tools: Process Simulate for the cell itself, with the robots, rails, conveyors, grippers and fixture running the full sequence, and Plant Simulation to compare the manual process against the cell. Output rises 10.01% and the headcount falls 75%.</p>
+          <p>The team built a digital twin in two tools: Process Simulate for the cell itself, with the robots, rails, conveyors, grippers and fixture running the full sequence, and Plant Simulation to compare the manual process against the cell. Output rises 10% and the headcount falls 75%.</p>
 
           <figure class="timing">
             <p class="timing-sub">Daily output and operators required: starting point compared with the simulated cell.</p>
@@ -179,21 +213,6 @@
             </ul>
           </figure>
 
-          <figure class="timing">
-            <p class="timing-sub">Time to fold one box.</p>
-            <div class="timing-grid">
-              <div class="scale" aria-hidden="true"><span>0</span><span>3</span><span>6</span><span>9</span><span>12 s</span></div>
-
-              <div class="row-label">Manual folding</div>
-              <div class="track"><span class="bar baseline" style="--v:0.9167"></span></div>
-              <div class="row-value"><strong>11 s</strong> <span>per box</span></div>
-
-              <div class="row-label">Robotic cell</div>
-              <div class="track"><span class="bar sim" style="--v:0.8333"></span></div>
-              <div class="row-value"><strong>10 s</strong> <span>per box, projected</span></div>
-            </div>
-          </figure>
-
           <ul class="gallery gallery--natural">
             <li>
               <figure>
@@ -215,8 +234,7 @@
           <h2 id="learned-heading">What I learned</h2>
           <p><strong>Start from the people doing the work.</strong> I learned how to take an automation from scratch, beginning with the problem and its ergonomic risk. RULA and JSI turned "this job is hard on the body" into numbers, and showed me that a solution has to be safe and comfortable for workers, not only efficient.</p>
           <p><strong>Simulate before you build.</strong> Process Simulate and Plant Simulation let us validate the whole design before building anything. They showed that the cell raises output, cuts the headcount and, above all, lowers the physical strain on operators.</p>
-          <p><strong>Decisions need evidence.</strong> Every choice had to rest on a safety standard such as ANSI/RIA, on system performance or on the return on investment.</p>
-          <p><strong>Details decide the design.</strong> From choosing the robot to placing sensors and actuators and planning motion paths, small details shaped the result. I also saw how continuous improvement and Lean thinking apply inside a robotic cell.</p>
+          <p><strong>Details decide the design.</strong> From choosing the robot to placing sensors and actuators and planning motion paths, small details shaped the result.</p>
         </section>
 
       </div>
@@ -228,19 +246,20 @@
             <div><dt>Context</dt><dd>Manufacturing systems automation course</dd></div>
             <div><dt>Dates</dt><dd>Feb – Jun 2025</dd></div>
             <div><dt>Type</dt><dd>Team project, four students</dd></div>
-            <div><dt>Status</dt><dd>Designed and validated in simulation</dd></div>
+            <div><dt>Status</dt><dd>Designed and validated in simulation, not built</dd></div>
           </dl>
           <div class="tools-wrap">
             <h3>Equipment and tools</h3>
             <ul class="tools">
-              <li>Universal Robots UR10</li>
+              <li>Universal Robots UR10 (×2)</li>
               <li>Tecnomatix Plant Simulation</li>
               <li>Process Simulate</li>
               <li>SolidWorks</li>
-              <li>Cognex vision</li>
-              <li>Vacuum grippers</li>
-              <li>Linear rails</li>
-              <li>Conveyors</li>
+              <li>Cognex In-Sight 7200</li>
+              <li>TXN-38 vacuum cups</li>
+              <li>igus drylin ZLW-1080 (fixture axis)</li>
+              <li>TMO-1-W linear rails (robots)</li>
+              <li>ICONVEY modular conveyors</li>
               <li>PLC-based control</li>
               <li>ANSI/RIA R15.06-1999</li>
               <li>RULA</li>
