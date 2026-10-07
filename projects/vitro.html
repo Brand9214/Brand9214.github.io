@@ -94,7 +94,7 @@
           <p>The tray organizes the four insert types in fixed zones, one per geometry: short screws, long screws, rectangular pins and cylindrical pins. It follows a poka-yoke approach, with slots shaped to each insert, so every part sits in a known position before the robot picks it and mix-ups are prevented from the very first pick. That removes variability at the source and makes the camera's check simpler. The operator loads the tray at the start of each shift and does not step in during the cycle.</p>
           <ul class="work">
             <li>The prototype tray is 3D printed in PLA (FDM), 170 × 65 × 11.5 mm, with a tolerance of ±0.2 mm, and is bolted to the MDF table.</li>
-            <li>For the industrial cell, the report recommends CNC machining instead of 3D printing, for durability and dimensional precision in continuous production.</li>
+            <li>For the industrial cell, the tray would be CNC machined in 6061 aluminum or similar instead of 3D printed, for durability and dimensional precision in continuous production.</li>
           </ul>
           <ul class="gallery gallery--natural">
             <li>
@@ -159,7 +159,7 @@
 
         <section class="block" aria-labelledby="prototype-heading">
           <h2 id="prototype-heading">Prototype</h2>
-          <p>The prototype is a working mock-up of the press, built in the Smart Factory lab at Tecnológico de Monterrey. An MDF plate (122 × 40 cm) stands in for the upper half of the mold, held by two steel pillars at the UR3's working height. Under it, 12 holders with holes, one per insert and 3D printed, copy the layout of the real mold, with modeling clay inside each hole to keep the inserts in place. Vitro gave the overall press dimensions and working area but not the exact hole positions, so the layout is representative rather than exact. As in the real operation, the robot reaches in from below and lifts its arm to push each insert up into the mold.</p>
+          <p>The prototype is a working mock-up of the press, built in the Smart Factory lab at Tecnológico de Monterrey. An MDF plate (122 × 40 cm) stands in for the upper half of the mold, held by two steel pillars at the UR3's working height. Under it, 12 holders with holes, one per insert and 3D printed, follow the general layout of the real mold, with modeling clay inside each hole to keep the inserts in place. Vitro gave the overall press dimensions and working area but not the exact hole positions, so the layout is representative rather than exact. As in the real operation, the robot reaches in from below and lifts its arm to push each insert up into the mold.</p>
           <p>The sequence runs from PolyScope. The arm starts from a safe home position and moves to the tray. Before each pick it triggers the Cognex camera. On an OK result the green light turns on, the valve closes the gripper, and the robot carries the insert to its position in the mold and releases it. On a NOK result the orange light turns on, and the robot waits and retries the capture without picking. This repeats for all 12 inserts, and the robot returns home. On the UR3 build the full cycle ran in under 80 seconds, with all 12 inserts placed correctly and the operator outside the press area.</p>
           <figure class="plate">
             <img src="../img/vitro/prototype-lab.jpg" width="1433" height="1080" loading="lazy" alt="The prototype in the lab: the MDF press mock-up with the camera above it, the UR3 with its gripper at the right, and the insert tray on the table, each labeled in Spanish.">
