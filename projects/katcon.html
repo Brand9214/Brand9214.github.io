@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Operations intelligence platform | Brandon Lagunas</title>
+  <title>Maintenance analytics and continuous improvement system | Brandon Lagunas</title>
   <meta name="description" content="Katcon internship: a Power BI operations intelligence platform for 25 production lines and 300+ machines, with a standard failure classification and an MTTR, MTBF and downtime reporting framework.">
   <link rel="stylesheet" href="../css/style.css">
 </head>
@@ -27,15 +27,33 @@
 
     <header class="project-head">
       <div class="card-meta"><span class="partner">Katcon</span><span>Sep 2025 – Jun 2026</span><span>Internship</span></div>
-      <h1 class="project-title">Operations intelligence platform</h1>
+      <h1 class="project-title">Maintenance analytics and continuous improvement system</h1>
       <p class="lede">A Power BI platform that shows failures and downtime for 25 production lines and 300+ machines, from the whole plant down to a single technician or system, built on a failure classification I standardized during my internship.</p>
     </header>
 
-    <dl class="stats">
-      <div><dt>Production lines covered</dt><dd>25</dd></div>
-      <div><dt>Machines covered</dt><dd>300+</dd></div>
-      <div><dt>MTTR, from a 75-minute baseline</dt><dd>53 min</dd><span class="tag"><span class="swatch real"></span>Plant data</span></div>
-      <div><dt>Machines with TPM standards</dt><dd>30+</dd></div>
+    <figure class="cover cover--flow">
+      <ol class="flow" aria-label="How the platform is structured, from the source files to the maintenance supervisors">
+        <li><span class="flow-title">Excel files on SharePoint</span></li>
+        <li><span class="flow-title">Power Query</span><span class="flow-sub">Cleaning and shaping</span></li>
+        <li><span class="flow-title">Data model</span></li>
+        <li><span class="flow-title">DAX measures</span><span class="flow-sub">MTTR, MTBF, downtime, availability</span></li>
+        <li class="flow-wide"><span class="flow-title">Report modules</span>
+          <ul>
+            <li>Weekly, monthly and annual reports</li>
+            <li>MTTR and MTBF by area</li>
+            <li>Technicians and shifts</li>
+            <li>Top critical machines</li>
+            <li>Failure explorer</li>
+          </ul>
+        </li>
+        <li><span class="flow-title">Maintenance supervisors</span></li>
+      </ol>
+    </figure>
+
+    <dl class="stats stats--3">
+      <div><dt>MTTR, from a 75-minute 2025 average</dt><dd>53 min</dd><span class="tag"><span class="swatch real"></span>Plant data</span></div>
+      <div><dt>Machines across 25 production lines</dt><dd>300+</dd><span class="tag"><span class="swatch real"></span>Plant data</span></div>
+      <div><dt>Plants using the platform</dt><dd>2</dd><span class="tag"><span class="swatch real"></span>Plant data</span></div>
     </dl>
 
     <div class="project-body">
@@ -43,17 +61,87 @@
 
         <section class="block" aria-labelledby="challenge-heading">
           <h2 id="challenge-heading">The challenge</h2>
-          <p>With 25 production lines and 300+ machines, failure reports needed one common structure so downtime could be analyzed and attributed to the right area.</p>
+          <p>Katcon's Plant 2 runs 25 production lines and 300+ machines. Failure records were logged inconsistently by interns, with no common structure, so downtime couldn't be traced to a failure mode or to the area responsible. KPI reports were built by hand, no dashboard showed the targets, and the plant needed a reliable baseline for its internal and customer audits under IATF 16949. My task was to turn all of that into a single source of truth for maintenance supervisors, from the whole plant down to a single machine.</p>
         </section>
 
         <section class="block" aria-labelledby="work-heading">
           <h2 id="work-heading">What I did</h2>
           <ul class="work">
-            <li>Built an end-to-end Power BI operations intelligence platform covering 25 production lines and 300+ machines, with drill-down by area, line, shift, technician and system, and an interactive failure analysis tool that links each event to its root cause.</li>
-            <li>Led the redesign of the plant failure reporting system, standardizing a failure classification by failure mode, affected component and responsible area, so downtime can be analyzed and attributed across functions.</li>
-            <li>Established the MTTR, MTBF and downtime reporting framework and calculated the reliability baseline, enabling line-level targets and supporting action plans that moved MTTR from a 75-minute baseline to 53 minutes.</li>
-            <li>Standardized autonomous maintenance (TPM) procedures, with visual work instructions and inspection checklists, across 30+ machines and 8 new production lines during ramp-up.</li>
+            <li>Redesigned the failure reporting system: restructured the fields of the failure log and standardized a classification by failure mode, root component and responsible area across 400+ records.</li>
+            <li>Set up the MTTR, MTBF and downtime reporting framework and calculated the reliability baseline from 2025 data.</li>
+            <li>Built an end-to-end Power BI platform for Plant 2 on top of it, refreshing automatically from Excel files on SharePoint, with weekly, monthly and annual reports, drill-down by area, line, shift, technician and system, targets visible on every chart, and a failure explorer that links each event to its root cause. I learned DAX and Power Query from scratch to build it.</li>
+            <li>Adapted the same system for Plant 1, to its own lines, equipment and needs.</li>
           </ul>
+        </section>
+
+        <section class="block" aria-labelledby="platform-heading">
+          <h2 id="platform-heading">Platform map</h2>
+          <div class="table-wrap">
+            <table class="risk-table risk-table--rating">
+              <caption>What each module of the platform answers.</caption>
+              <thead>
+                <tr><th scope="col">Module</th><th scope="col">What it answers</th></tr>
+              </thead>
+              <tbody>
+                <tr><th scope="row">Weekly, monthly and annual reports</th><td>MTTR by area against target, cumulative MTBF by line, failures per line, availability, preventive maintenance plan and compliance, days without accidents</td></tr>
+                <tr><th scope="row">MTTR and MTBF by area</th><td>Month-by-month trends for Subassemblies, Final Assembly, Tubes and Composites against their targets</td></tr>
+                <tr><th scope="row">Technicians and shifts</th><td>MTTR and failures attended by technician and shift, failures by system</td></tr>
+                <tr><th scope="row">Top critical machines</th><td>The three machines with the most failures, with MTTR, MTBF, monthly trends, failures by system and top anomalies</td></tr>
+                <tr><th scope="row">Failure explorer</th><td>Each event with its machine, line, system, failure mode, affected element, who attended it, the failure description and the actions taken</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <figure class="plate">
+            <div class="dash" role="group" aria-label="Recreated weekly report with sample data">
+              <div class="dash-head"><strong>Weekly report</strong><span>Week 12, sample data</span></div>
+
+              <div class="dash-tile">
+                <h4>MTTR by area, minutes</h4>
+                <div class="dash-row"><span>Area A</span><div class="track"><span class="bar sim" style="--v:0.475"></span><span class="dash-target" style="left:62.5%"></span></div><b>38</b></div>
+                <div class="dash-row"><span>Area B</span><div class="track"><span class="bar sim" style="--v:0.65"></span><span class="dash-target" style="left:62.5%"></span></div><b>52</b></div>
+                <div class="dash-row"><span>Area C</span><div class="track"><span class="bar sim" style="--v:0.55"></span><span class="dash-target" style="left:62.5%"></span></div><b>44</b></div>
+                <div class="dash-row"><span>Area D</span><div class="track"><span class="bar sim" style="--v:0.7625"></span><span class="dash-target" style="left:62.5%"></span></div><b>61</b></div>
+                <p class="dash-note">Dashed line: target of 50 minutes</p>
+              </div>
+
+              <div class="dash-tile">
+                <h4>Cumulative MTBF by line, hours</h4>
+                <div class="dash-row"><span>Line A</span><div class="track"><span class="bar sim" style="--v:0.7"></span></div><b>140</b></div>
+                <div class="dash-row"><span>Line B</span><div class="track"><span class="bar sim" style="--v:0.475"></span></div><b>95</b></div>
+                <div class="dash-row"><span>Line C</span><div class="track"><span class="bar sim" style="--v:0.9"></span></div><b>180</b></div>
+              </div>
+
+              <div class="dash-tile">
+                <h4>Failures per line</h4>
+                <div class="dash-row"><span>Line A</span><div class="track"><span class="bar sim" style="--v:0.5625"></span></div><b>9</b></div>
+                <div class="dash-row"><span>Line B</span><div class="track"><span class="bar sim" style="--v:0.875"></span></div><b>14</b></div>
+                <div class="dash-row"><span>Line C</span><div class="track"><span class="bar sim" style="--v:0.3125"></span></div><b>5</b></div>
+              </div>
+
+              <div class="dash-tile">
+                <h4>Availability</h4>
+                <div class="dash-big">94%</div>
+                <p class="dash-note">Sample plant total</p>
+              </div>
+
+              <div class="dash-tile">
+                <h4>Preventive maintenance</h4>
+                <div class="dash-row"><span>Planned</span><div class="track"><span class="bar sim" style="--v:1"></span></div><b>40</b></div>
+                <div class="dash-row"><span>Done</span><div class="track"><span class="bar sim" style="--v:0.9"></span></div><b>36</b></div>
+                <p class="dash-note">Compliance: 90%</p>
+              </div>
+
+              <div class="dash-tile">
+                <h4>Days without accidents</h4>
+                <div class="dash-big">128</div>
+                <p class="dash-note">Sample count</p>
+              </div>
+            </div>
+            <figcaption>Recreated layout with sample data, not plant data.</figcaption>
+          </figure>
+
+          <p class="note">Dashboard screenshots are not shown to protect plant and employee data.</p>
         </section>
 
         <section class="block" aria-labelledby="results-heading">
@@ -63,20 +151,34 @@
             <div class="timing-grid">
               <div class="scale" aria-hidden="true"><span>0</span><span>20</span><span>40</span><span>60</span><span>80 min</span></div>
 
-              <div class="row-label">Baseline</div>
+              <div class="row-label">2025 average</div>
               <div class="track"><span class="bar baseline" style="--v:0.9375"></span></div>
               <div class="row-value"><strong>75 min</strong></div>
 
-              <div class="row-label">After action plans</div>
+              <div class="row-label">2026 YTD, end of internship</div>
               <div class="track"><span class="bar real" style="--v:0.6625"></span></div>
               <div class="row-value"><strong>53 min</strong> <span>plant data</span></div>
             </div>
             <ul class="legend">
-              <li><span class="swatch baseline"></span>Baseline</li>
+              <li><span class="swatch baseline"></span>2025 average</li>
               <li><span class="swatch real"></span>Solid: real plant data</li>
             </ul>
           </figure>
-          <p class="note">Dashboard screenshots are not shown to protect plant data.</p>
+          <ul class="work">
+            <li>MTTR went from a 75-minute average in 2025 to 53 minutes in 2026 year-to-date by the end of my internship (−29%), below the plant's 60-minute target, through action plans the framework helped set and track.</li>
+            <li>Maintenance engineers adopted the new failure log directly, replacing the inconsistent intern-led logging.</li>
+            <li>The reliability baseline supported the plant's internal and customer IATF 16949 audits.</li>
+            <li>The platform is still in use by the maintenance team after my internship ended.</li>
+            <li>Before leaving, I trained colleagues to run and maintain the reports.</li>
+          </ul>
+        </section>
+
+        <section class="block" aria-labelledby="also-heading">
+          <h2 id="also-heading">Also during the internship</h2>
+          <ul class="work">
+            <li>Standardized autonomous maintenance (TPM) procedures, with visual work instructions and inspection checklists, for 30+ machines and 8 new production lines during ramp-up.</li>
+            <li>Built a spare parts catalog in Power BI with 1,000+ parts, searchable by SAP number, part number, brand, category and line, with minimum and maximum stock levels, and wrote its user manual.</li>
+          </ul>
         </section>
 
       </div>
