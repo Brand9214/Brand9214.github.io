@@ -72,14 +72,16 @@
 
         <section class="block" aria-labelledby="challenge-heading">
           <h2 id="challenge-heading">The challenge</h2>
-          <p>Katcon's Plant 2 runs 25 production lines and 300+ machines. Failure records were logged inconsistently by interns, with no common structure, so downtime couldn't be traced to a failure mode or to the area responsible. KPI reports were built by hand, no dashboard showed the targets, and the plant needed a reliable baseline for its internal and customer audits under IATF 16949. My task was to turn all of that into a single source of truth for maintenance supervisors, from the whole plant down to a single machine.</p>
+          <p>Katcon's Plant 2 has 25 production lines and more than 300 machines. When I joined the maintenance area, failures were recorded differently depending on who filed the report, which made it hard to tell clearly what had failed, why it had happened and which area was responsible.</p>
+          <p>On top of that, most KPI tracking was done by hand, with the information spread across different files. That made it harder to analyze maintenance performance, compare results against targets and have consistent information for internal and customer audits under IATF 16949.</p>
+          <p>My project was to reorganize and standardize this information and turn it into a centralized analysis system, able to show maintenance performance from a plant-wide view down to a single line, machine or failure event.</p>
         </section>
 
         <section class="block" aria-labelledby="work-heading">
           <h2 id="work-heading">What I did</h2>
           <ul class="work">
             <li>Redesigned the failure reporting system: restructured the fields of the failure log and standardized a classification by failure mode, root component and responsible area across 400+ records.</li>
-            <li>Set up the mean time to repair (MTTR), mean time between failures (MTBF) and downtime reporting framework, and calculated the reliability baseline from 2025 data.</li>
+            <li>Set up the mean time to repair (MTTR), mean time between failures (MTBF) and downtime reporting framework, corrected the availability calculation and calculated the reliability baseline from 2025 data.</li>
             <li>Built an end-to-end Power BI platform for Plant 2 on top of it, refreshing automatically from Excel files on SharePoint, with weekly, monthly and annual reports, drill-down by area, line, shift, technician and system, targets visible on every chart, and a failure explorer that links each event to its root cause. I learned DAX and Power Query from scratch to build it.</li>
             <li>Adapted the same system for Plant 1, to its own lines, equipment and needs.</li>
           </ul>
@@ -150,7 +152,7 @@
           </figure>
           <ul class="work">
             <li>MTTR went from a 75-minute average in 2025 to 53 minutes in 2026 year-to-date by the end of my internship (−29%), below the plant's 60-minute target, through action plans the framework helped set and track.</li>
-            <li>Maintenance engineers adopted the new failure log directly, replacing the inconsistent intern-led logging.</li>
+            <li>Maintenance engineers adopted the new failure log as their standard way of reporting failures.</li>
             <li>The reliability baseline supported the plant's internal and customer IATF 16949 audits.</li>
             <li>The platform is still in use by the maintenance team after my internship ended.</li>
             <li>Before leaving, I trained colleagues to run and maintain the reports.</li>
@@ -184,7 +186,7 @@
             <div><dt>Company</dt><dd>Katcon, automotive supplier in Monterrey</dd></div>
             <div><dt>My role</dt><dd>Maintenance intern</dd></div>
             <div><dt>Dates</dt><dd>Sep 2025 – Jun 2026</dd></div>
-            <div><dt>Users</dt><dd>Maintenance supervisors</dd></div>
+            <div><dt>Users</dt><dd>Maintenance engineers</dd></div>
           </dl>
           <div class="tools-wrap">
             <h3>Tools</h3>
