@@ -544,6 +544,7 @@ p { margin: 0 0 1em; max-width: var(--measure); }
 .risk-table .total td { background: var(--surface); font-weight: 600; }
 
 .more { margin-top: 8px; }
+.more + p { margin-top: 20px; }
 .more summary { cursor: pointer; font-weight: 600; color: var(--link); padding: 6px 0; }
 .more[open] summary { margin-bottom: 16px; }
 .more img { width: 100%; height: auto; margin-bottom: 16px; border: 1px solid var(--rule); border-radius: 4px; background: #fff; }

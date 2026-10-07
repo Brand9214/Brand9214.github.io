@@ -64,7 +64,7 @@
           <h2 id="systems-heading">Two systems, one process</h2>
           <p>This page covers two systems that run the same loading process but are not the same machine.</p>
           <ul class="work">
-            <li><strong>Industrial cell, a design.</strong> An ABB IRB 1300-7/1.4 with its OmniCore controller, a central PLC and HMI, a three-finger gripper in 6061 aluminum that handles all four insert geometries without a tool change, a Cognex IS2800 camera, and the 12 Keyence FS-N40 sensors already in the press. It exists only in CAD and in the RobotStudio simulation.</li>
+            <li><strong>Industrial cell, a design.</strong> An ABB IRB 1300-7/1.4 with its OmniCore controller, a central PLC and HMI, a three-gripper end effector in 6061 aluminum that handles all four insert geometries without a tool change, a Cognex IS2800 camera, and the 12 Keyence FS-N40 sensors already in the press. It exists only in CAD and in the RobotStudio simulation.</li>
             <li><strong>Prototype, built in the Smart Factory lab.</strong> A UR3 robot, a pneumatic two-finger gripper (PHD 19092-2) with 3D-printed PLA jaws, a 5/2 solenoid valve, the same Cognex IS2800, control from the teach pendant in PolyScope with no PLC and no Keyence sensors, and a mock-up of the press in MDF.</li>
           </ul>
         </section>
@@ -72,18 +72,18 @@
         <section class="block" aria-labelledby="industrial-heading">
           <h2 id="industrial-heading">Industrial cell</h2>
           <p>The robot is an ABB IRB 1300-7/1.4 with a 7 kg payload, 1,400 mm reach and ±0.02 mm repeatability, programmed in RAPID. In the simulation the press is modeled in a simplified way, as two columns spaced like the real ones from the plans Vitro provided, which is enough to check that the robot reaches all 12 mold positions.</p>
-          <p>The gripper is a three-finger design in 6061 aluminum, CNC machined: three pneumatic units, each with two gripping jaws and a pushing jaw that seats the insert. The team chose it over an alternative that swaps tools automatically, which would add 9 to 15 seconds to every cycle, add weight against the 7 kg payload and add a mechanical failure point that could stop production. One tool for the whole cycle keeps the sequence short and the design simple.</p>
+          <p>The end effector is a three-gripper design in 6061 aluminum, CNC machined: one tool carrying three small grippers. Each has two gripping jaws and a push jaw in the center that seats the insert, so the robot can carry up to three inserts per trip. In the simulated sequence the 12 inserts are loaded in five groups of two or three. The team chose it over an alternative that swaps tools automatically, which would add 9 to 15 seconds to every cycle, add weight against the 7 kg payload and add a mechanical failure point that could stop production. One tool for the whole cycle keeps the sequence short and the design simple.</p>
           <ul class="gallery gallery--natural">
             <li>
               <figure>
-                <img src="../img/vitro/gripper-cad.png" width="482" height="402" loading="lazy" alt="CAD model of the three-finger gripper: a round yellow body with three angled pneumatic units below it.">
-                <figcaption>CAD model of the industrial three-finger gripper.</figcaption>
+                <img src="../img/vitro/gripper-cad.png" width="482" height="402" loading="lazy" alt="CAD model of the three-gripper end effector: a round yellow body with three angled grippers below it.">
+                <figcaption>CAD model of the industrial three-gripper end effector.</figcaption>
               </figure>
             </li>
             <li>
               <figure>
-                <img src="../img/vitro/gripper-drawing.png" width="615" height="431" loading="lazy" alt="Technical drawing of the three-finger gripper with five views and main dimensions.">
-                <figcaption>Drawing of the gripper with its main views.</figcaption>
+                <img src="../img/vitro/gripper-drawing.png" width="615" height="431" loading="lazy" alt="Technical drawing of the three-gripper end effector with five views and main dimensions.">
+                <figcaption>Drawing of the end effector with its main views.</figcaption>
               </figure>
             </li>
           </ul>
@@ -244,6 +244,56 @@
               <li><span class="swatch sim"></span>Hatched: projection</li>
             </ul>
           </figure>
+
+          <details class="more">
+            <summary>Project timeline</summary>
+            <figure class="timing">
+              <p class="timing-sub">The ten phases of the project and their dates, from the report's activity plan.</p>
+              <div class="timing-grid">
+                <div class="scale" aria-hidden="true"><span>Mar 30</span><span>Apr 18</span><span>May 7</span><span>May 25</span><span>Jun 12</span></div>
+
+                <div class="row-label">1. Diagnosis</div>
+                <div class="track"><span class="bar real" style="--v:0.1067;left:0%"></span></div>
+                <div class="row-value"><strong>Mar 30 – Apr 6</strong></div>
+
+                <div class="row-label">2. State of the art</div>
+                <div class="track"><span class="bar real" style="--v:0.1733;left:10.67%"></span></div>
+                <div class="row-value"><strong>Apr 7 – Apr 19</strong></div>
+
+                <div class="row-label">3. Conceptual design</div>
+                <div class="track"><span class="bar real" style="--v:0.1067;left:28%"></span></div>
+                <div class="row-value"><strong>Apr 20 – Apr 27</strong></div>
+
+                <div class="row-label">4. CAD design</div>
+                <div class="track"><span class="bar real" style="--v:0.28;left:28%"></span></div>
+                <div class="row-value"><strong>Apr 20 – May 10</strong></div>
+
+                <div class="row-label">5. RobotStudio simulation</div>
+                <div class="track"><span class="bar real" style="--v:0.6133;left:25.33%"></span></div>
+                <div class="row-value"><strong>Apr 18 – Jun 2</strong></div>
+
+                <div class="row-label">6. Cognex vision</div>
+                <div class="track"><span class="bar real" style="--v:0.2667;left:40%"></span></div>
+                <div class="row-value"><strong>Apr 29 – May 18</strong></div>
+
+                <div class="row-label">7. Control integration</div>
+                <div class="track"><span class="bar real" style="--v:0.1867;left:58.67%"></span></div>
+                <div class="row-value"><strong>May 13 – May 26</strong></div>
+
+                <div class="row-label">8. Prototype fabrication</div>
+                <div class="track"><span class="bar real" style="--v:0.2133;left:56%"></span></div>
+                <div class="row-value"><strong>May 11 – May 26</strong></div>
+
+                <div class="row-label">9. Experimental validation</div>
+                <div class="track"><span class="bar real" style="--v:0.2;left:70.67%"></span></div>
+                <div class="row-value"><strong>May 22 – Jun 5</strong></div>
+
+                <div class="row-label">10. Documentation and delivery</div>
+                <div class="track"><span class="bar real" style="--v:0.16;left:84%"></span></div>
+                <div class="row-value"><strong>Jun 1 – Jun 12</strong></div>
+              </div>
+            </figure>
+          </details>
 
           <p>Watch the team's <a href="https://drive.google.com/file/d/1o_k1DB6MaqKk7Chijla-QG1n3UHvlIE_/view" target="_blank" rel="noopener">RobotStudio simulation</a> and the <a href="https://drive.google.com/file/d/1dvCJMhmD1G_Fug0xIZEpjdAXU93-AJfv/view" target="_blank" rel="noopener">prototype video</a>.</p>
           <p class="note">Figures, tables and results come from the team's integrated technical report for the course, dated June 12, 2026.</p>
