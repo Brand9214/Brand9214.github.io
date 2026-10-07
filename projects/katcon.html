@@ -10,13 +10,7 @@
 <body>
   <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
     <defs>
-      <symbol id="i-scatter" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 12h12v16H6z"/><path d="M9 17h6M9 21h6M9 25h3"/><path d="M27 5h12v16H27z"/><path d="M30 10h6M30 14h6M30 18h3"/><path d="M19 30h12v14H19z"/><path d="M22 35h6M22 39h6"/></g><circle cx="41" cy="32" r="2" fill="currentColor"/><circle cx="8" cy="38" r="2" fill="currentColor"/><circle cx="19" cy="8" r="1.6" fill="currentColor"/></symbol>
-      <symbol id="i-structure" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="20" cy="11" rx="11" ry="5"/><path d="M9 11v18c0 2.8 4.9 5 11 5s11-2.2 11-5V11"/><path d="M9 20c0 2.8 4.9 5 11 5s11-2.2 11-5"/><rect x="31" y="32" width="12" height="9" rx="1.5"/><path d="M26 35h5"/></g></symbol>
-      <symbol id="i-baseline" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="7" width="30" height="32" rx="3"/><path d="M11 15h13"/><path d="M12 33v-7M18 33v-12M24 33v-9"/><circle cx="37" cy="36" r="4"/><path d="M37 29v3M37 40v3M30 36h3M41 36h3"/></g></symbol>
       <symbol id="i-monitor" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="7" width="38" height="26" rx="3"/><path d="M17 41h14M24 33v8"/><path d="M12 28v-6M18 28v-10M24 28v-7"/><path d="M33 14a7 7 0 1 0 7 7h-7z"/></g></symbol>
-      <symbol id="i-analysis" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="20" cy="20" r="13"/><path d="M30 30l12 12"/><path d="M14 26v-5M20 26v-9M26 26v-6"/></g></symbol>
-      <symbol id="i-decisions" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="8" width="26" height="34" rx="3"/><path d="M14 5h12v6H14z"/><path d="M12 20l2 2 4-4M12 30l2 2 4-4"/><path d="M22 21h7M22 31h7"/><circle cx="37" cy="36" r="4"/><path d="M37 29v3M37 40v3M30 36h3M41 36h3"/></g></symbol>
-      <symbol id="i-result" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 42V31h8v11M20 42V24h8v18M33 42V17h8v25"/><path d="M7 21l12-9 8 4 13-10"/><path d="M33 6h7v7"/></g></symbol>
       <symbol id="i-sheet" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="6" width="34" height="36" rx="3"/><path d="M7 17h34M7 27h34M7 37h34M20 6v36"/></g></symbol>
       <symbol id="i-cloud-folder" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 38h22a9 9 0 0 0 1.5-17.9A12 12 0 0 0 13.6 22 8 8 0 0 0 13 38z"/><path d="M19 33h11v-8h-5l-2-2h-4z"/></g></symbol>
       <symbol id="i-funnel" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 9h32L28 24v13l-8 4V24z"/></g></symbol>
@@ -46,20 +40,13 @@
     <header class="project-head">
       <div class="card-meta"><span class="partner">Katcon</span><span>Sep 2025 – Jun 2026</span><span>Internship</span></div>
       <h1 class="project-title">Maintenance analytics and continuous improvement system</h1>
-      <p class="lede">A Power BI platform that shows failures and downtime for 25 production lines and 300+ machines, from the whole plant down to a single technician or system, built on a failure classification I standardized during my internship.</p>
+      <p class="lede">A system I built end to end to standardize how failures are recorded and turn maintenance data into clear KPIs, so engineers can see what failed, why, and where to act first. It is still in use after my internship ended.</p>
     </header>
 
-    <figure class="cover cover--steps">
-      <ol class="steps steps--7" aria-label="How the project moved from scattered data to a lower mean time to repair">
-        <li><span class="step-icon"><svg aria-hidden="true" focusable="false"><use href="#i-scatter"/></svg><span class="step-num" aria-hidden="true">1</span></span><span class="step-title">Scattered data</span><span class="step-text">Scattered records, little traceability and low visibility of failures</span></li>
-        <li><span class="step-icon"><svg aria-hidden="true" focusable="false"><use href="#i-structure"/></svg><span class="step-num" aria-hidden="true">2</span></span><span class="step-title">Structure</span><span class="step-text">Standardized reporting and failure taxonomy</span></li>
-        <li><span class="step-icon"><svg aria-hidden="true" focusable="false"><use href="#i-baseline"/></svg><span class="step-num" aria-hidden="true">3</span></span><span class="step-title">Baseline</span><span class="step-text">KPIs defined: MTTR, MTBF, availability and downtime</span></li>
-        <li><span class="step-icon"><svg aria-hidden="true" focusable="false"><use href="#i-monitor"/></svg><span class="step-num" aria-hidden="true">4</span></span><span class="step-title">Power BI</span><span class="step-text">Analytics platform for 25 lines and 300+ machines</span></li>
-        <li><span class="step-icon"><svg aria-hidden="true" focusable="false"><use href="#i-analysis"/></svg><span class="step-num" aria-hidden="true">5</span></span><span class="step-title">Analysis</span><span class="step-text">Failure explorer, root cause and patterns by area, line, shift and system</span></li>
-        <li><span class="step-icon"><svg aria-hidden="true" focusable="false"><use href="#i-decisions"/></svg><span class="step-num" aria-hidden="true">6</span></span><span class="step-title">Decisions</span><span class="step-text">Prioritized corrective actions and maintenance focus</span></li>
-        <li><span class="step-icon"><svg aria-hidden="true" focusable="false"><use href="#i-result"/></svg><span class="step-num" aria-hidden="true">7</span></span><span class="step-title">Result</span><span class="step-text">More visibility, better follow-up and lower MTTR</span></li>
-      </ol>
+    <figure class="cover">
+      <img src="../img/katcon/annual-report.png" width="1274" height="906" style="object-position: 50% 0" alt="Annual general report dashboard for Plant 2: days without accidents, plant MTTR, accumulated failures by line, annual MTTR by month against a 60-minute target, accumulated MTBF by month and preventive maintenance compliance.">
     </figure>
+    <p class="note">Annual general report for Plant 2: annual MTTR against its target, accumulated MTBF, accumulated failures by line and preventive maintenance compliance. Labels are in Spanish.</p>
 
     <dl class="stats stats--3">
       <div><dt>Mean time to repair, from a 75-minute 2025 average</dt><dd>53 min</dd><span class="tag"><span class="swatch real"></span>Plant data</span></div>
@@ -118,11 +105,6 @@
               </tbody>
             </table>
           </div>
-
-          <figure class="plate">
-            <img src="../img/katcon/annual-report.png" width="1274" height="906" loading="lazy" alt="Annual general report dashboard for Plant 2: days without accidents, plant MTTR, accumulated failures by line, annual MTTR by month against a 60-minute target, accumulated MTBF by month and preventive maintenance compliance.">
-            <figcaption>Annual general report for Plant 2: annual MTTR against its target, accumulated MTBF, accumulated failures by line and preventive maintenance compliance. Labels are in Spanish.</figcaption>
-          </figure>
 
           <figure class="plate">
             <img src="../img/katcon/top-critical-machines.png" width="1218" height="981" loading="lazy" alt="Top critical machines dashboard for Plant 2: totals for failures, downtime, MTTR and affected machines, and for each of the three machines its KPIs, monthly MTTR and MTBF charts, failures by system and top anomalies.">
